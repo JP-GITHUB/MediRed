@@ -12,7 +12,7 @@ namespace MediRed.Models
         public int LabId { get; set; }
         public string NameLab { get; set; }
         public string DirLab { get; set; }
-        public string MedicalSpeciality { get; set; }
+        public MedicalSpeciality MedicalSpeciality { get; set; }
         public int PhoneLab { get; set; }
     }
 }

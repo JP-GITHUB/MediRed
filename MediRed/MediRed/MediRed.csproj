@@ -191,11 +191,15 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AtentionCenter.cs" />
+    <Compile Include="Models\Doctor.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Laboratory.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\MedicalSpeciality.cs" />
     <Compile Include="Models\Medicine.cs" />
+    <Compile Include="Models\Patient.cs" />
+    <Compile Include="Models\Person.cs" />
+    <Compile Include="Models\Technologist.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
