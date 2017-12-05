@@ -11,7 +11,7 @@ namespace MediRed.Models
         [Key]
         public int MedicineId { get; set; }
         public string Name { get; set; }
-        public string Concentracion { get; set; }
+        public string Concentration { get; set; }
         public string Description { get; set; }
     }
 }

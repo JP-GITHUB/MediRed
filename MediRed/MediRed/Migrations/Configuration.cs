@@ -10,8 +10,13 @@ namespace MediRed.Migrations
         public Configuration()
         {
             AutomaticMigrationsEnabled = true;
+<<<<<<< HEAD
             ContextKey = "MediRed.Context.MediRedContext";
             AutomaticMigrationDataLossAllowed = true;
+=======
+            AutomaticMigrationDataLossAllowed = true;
+            ContextKey = "MediRed.Context.MediRedContext";
+>>>>>>> 610c351f6f7f7f2dca59feed4e695c294e281069
         }
 
         protected override void Seed(MediRed.Context.MediRedContext context)
