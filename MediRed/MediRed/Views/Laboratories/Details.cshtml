@@ -1,0 +1,50 @@
+﻿@model MediRed.Models.Laboratory
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Laboratory</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.NameLab)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NameLab)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DirLab)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DirLab)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MedicalSpeciality)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MedicalSpeciality)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PhoneLab)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PhoneLab)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.LabId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

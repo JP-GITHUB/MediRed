@@ -1,0 +1,33 @@
+﻿@model IEnumerable<MediRed.Models.MedicalSpeciality>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Especialidades Médicas</h2>
+
+<p>
+    @Html.ActionLink("Agregar nueva Especialidad", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Especialidad Médica
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.NameSpeciality)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id=item.SpecialityId }) |
+            @Html.ActionLink("Detalles", "Details", new { id=item.SpecialityId }) |
+            @Html.ActionLink("Borrar", "Delete", new { id=item.SpecialityId })
+        </td>
+    </tr>
+}
+
+</table>

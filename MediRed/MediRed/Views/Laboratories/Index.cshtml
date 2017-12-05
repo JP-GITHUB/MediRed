@@ -1,0 +1,51 @@
+﻿@model IEnumerable<MediRed.Models.Laboratory>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Lista de Laboratorios</h2>
+
+<p>
+    @Html.ActionLink("Agregar Laboratorio", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Nombre del Laboratorio
+        </th>
+        <th>
+            Dirección
+        </th>
+        <th>
+            Especialidad Médica
+        </th>
+        <th>
+            Teléfono
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.NameLab)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DirLab)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MedicalSpeciality)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PhoneLab)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id=item.LabId }) |
+            @Html.ActionLink("Detalles", "Details", new { id=item.LabId }) |
+            @Html.ActionLink("Borrar", "Delete", new { id=item.LabId })
+        </td>
+    </tr>
+}
+
+</table>

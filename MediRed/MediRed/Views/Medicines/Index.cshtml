@@ -4,18 +4,21 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Medicamentos</h2>
+<h2>Lista de Medicamentos</h2>
 
 <p>
-    @Html.ActionLink("Agregar medicamento", "Create")
+    @Html.ActionLink("Agregar nuevo Medicamento", "Create")
 </p>
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Name)
+            Nombre del Medicamento
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Description)
+            Concentración
+        </th>
+        <th>
+           Descripción del Medicamento
         </th>
         <th></th>
     </tr>
@@ -24,6 +27,9 @@
     <tr>
         <td>
             @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Concentracion)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Description)

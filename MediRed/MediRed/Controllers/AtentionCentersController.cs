@@ -11,107 +11,107 @@ using MediRed.Models;
 
 namespace MediRed.Controllers
 {
-    public class MedicinesController : Controller
+    public class AtentionCentersController : Controller
     {
         private MediRedContext db = new MediRedContext();
 
-        // GET: Medicines
+        // GET: AtentionCenters
         public ActionResult Index()
         {
-            return View(db.Medicines.ToList());
+            return View(db.AtentionCenters.ToList());
         }
 
-        // GET: Medicines/Details/5
+        // GET: AtentionCenters/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Medicine medicine = db.Medicines.Find(id);
-            if (medicine == null)
+            AtentionCenter atentionCenter = db.AtentionCenters.Find(id);
+            if (atentionCenter == null)
             {
                 return HttpNotFound();
             }
-            return View(medicine);
+            return View(atentionCenter);
         }
 
-        // GET: Medicines/Create
+        // GET: AtentionCenters/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Medicines/Create
+        // POST: AtentionCenters/Create
         // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
         // más información vea http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "MedicineId,Name,Concentracion,Description")] Medicine medicine)
+        public ActionResult Create([Bind(Include = "CenterId,NameCenter,DirCenter,PhoneCener")] AtentionCenter atentionCenter)
         {
             if (ModelState.IsValid)
             {
-                db.Medicines.Add(medicine);
+                db.AtentionCenters.Add(atentionCenter);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(medicine);
+            return View(atentionCenter);
         }
 
-        // GET: Medicines/Edit/5
+        // GET: AtentionCenters/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Medicine medicine = db.Medicines.Find(id);
-            if (medicine == null)
+            AtentionCenter atentionCenter = db.AtentionCenters.Find(id);
+            if (atentionCenter == null)
             {
                 return HttpNotFound();
             }
-            return View(medicine);
+            return View(atentionCenter);
         }
 
-        // POST: Medicines/Edit/5
+        // POST: AtentionCenters/Edit/5
         // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
         // más información vea http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "MedicineId,Name,Concentracion,Description")] Medicine medicine)
+        public ActionResult Edit([Bind(Include = "CenterId,NameCenter,DirCenter,PhoneCener")] AtentionCenter atentionCenter)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(medicine).State = EntityState.Modified;
+                db.Entry(atentionCenter).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(medicine);
+            return View(atentionCenter);
         }
 
-        // GET: Medicines/Delete/5
+        // GET: AtentionCenters/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Medicine medicine = db.Medicines.Find(id);
-            if (medicine == null)
+            AtentionCenter atentionCenter = db.AtentionCenters.Find(id);
+            if (atentionCenter == null)
             {
                 return HttpNotFound();
             }
-            return View(medicine);
+            return View(atentionCenter);
         }
 
-        // POST: Medicines/Delete/5
+        // POST: AtentionCenters/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Medicine medicine = db.Medicines.Find(id);
-            db.Medicines.Remove(medicine);
+            AtentionCenter atentionCenter = db.AtentionCenters.Find(id);
+            db.AtentionCenters.Remove(atentionCenter);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

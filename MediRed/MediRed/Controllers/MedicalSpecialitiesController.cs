@@ -11,107 +11,107 @@ using MediRed.Models;
 
 namespace MediRed.Controllers
 {
-    public class MedicinesController : Controller
+    public class MedicalSpecialitiesController : Controller
     {
         private MediRedContext db = new MediRedContext();
 
-        // GET: Medicines
+        // GET: MedicalSpecialities
         public ActionResult Index()
         {
-            return View(db.Medicines.ToList());
+            return View(db.MedicalSpecialities.ToList());
         }
 
-        // GET: Medicines/Details/5
+        // GET: MedicalSpecialities/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Medicine medicine = db.Medicines.Find(id);
-            if (medicine == null)
+            MedicalSpeciality medicalSpeciality = db.MedicalSpecialities.Find(id);
+            if (medicalSpeciality == null)
             {
                 return HttpNotFound();
             }
-            return View(medicine);
+            return View(medicalSpeciality);
         }
 
-        // GET: Medicines/Create
+        // GET: MedicalSpecialities/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Medicines/Create
+        // POST: MedicalSpecialities/Create
         // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
         // más información vea http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "MedicineId,Name,Concentracion,Description")] Medicine medicine)
+        public ActionResult Create([Bind(Include = "SpecialityId,NameSpeciality")] MedicalSpeciality medicalSpeciality)
         {
             if (ModelState.IsValid)
             {
-                db.Medicines.Add(medicine);
+                db.MedicalSpecialities.Add(medicalSpeciality);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(medicine);
+            return View(medicalSpeciality);
         }
 
-        // GET: Medicines/Edit/5
+        // GET: MedicalSpecialities/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Medicine medicine = db.Medicines.Find(id);
-            if (medicine == null)
+            MedicalSpeciality medicalSpeciality = db.MedicalSpecialities.Find(id);
+            if (medicalSpeciality == null)
             {
                 return HttpNotFound();
             }
-            return View(medicine);
+            return View(medicalSpeciality);
         }
 
-        // POST: Medicines/Edit/5
+        // POST: MedicalSpecialities/Edit/5
         // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
         // más información vea http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "MedicineId,Name,Concentracion,Description")] Medicine medicine)
+        public ActionResult Edit([Bind(Include = "SpecialityId,NameSpeciality")] MedicalSpeciality medicalSpeciality)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(medicine).State = EntityState.Modified;
+                db.Entry(medicalSpeciality).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(medicine);
+            return View(medicalSpeciality);
         }
 
-        // GET: Medicines/Delete/5
+        // GET: MedicalSpecialities/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Medicine medicine = db.Medicines.Find(id);
-            if (medicine == null)
+            MedicalSpeciality medicalSpeciality = db.MedicalSpecialities.Find(id);
+            if (medicalSpeciality == null)
             {
                 return HttpNotFound();
             }
-            return View(medicine);
+            return View(medicalSpeciality);
         }
 
-        // POST: Medicines/Delete/5
+        // POST: MedicalSpecialities/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Medicine medicine = db.Medicines.Find(id);
-            db.Medicines.Remove(medicine);
+            MedicalSpeciality medicalSpeciality = db.MedicalSpecialities.Find(id);
+            db.MedicalSpecialities.Remove(medicalSpeciality);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

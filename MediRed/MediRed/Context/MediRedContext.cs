@@ -20,5 +20,11 @@ namespace MediRed.Context
         }
 
         public System.Data.Entity.DbSet<MediRed.Models.Medicine> Medicines { get; set; }
+
+        public System.Data.Entity.DbSet<MediRed.Models.AtentionCenter> AtentionCenters { get; set; }
+
+        public System.Data.Entity.DbSet<MediRed.Models.Laboratory> Laboratories { get; set; }
+
+        public System.Data.Entity.DbSet<MediRed.Models.MedicalSpeciality> MedicalSpecialities { get; set; }
     }
 }
