@@ -8,5 +8,7 @@ namespace MediRed.Models
     public class Doctor: Person
     {
         public MedicalSpeciality SpecialityDoc { get; set; }
-    }
+        public AtentionCenter PlaceWork { get; set; }
+    }   
+
 }

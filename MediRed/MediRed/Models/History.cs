@@ -5,9 +5,11 @@ using System.Web;
 
 namespace MediRed.Models
 {
-    public class Patient: Person
+    public class History
     {
+        public Patient Patient { get; set; }
         public Diagnostic Diagnostic { get; set; }
-        public string Treatment { get; set; }
+        public AtentionCenter AtentionCenter { get; set; }
+
     }
 }
