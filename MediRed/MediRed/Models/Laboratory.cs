@@ -10,9 +10,17 @@ namespace MediRed.Models
     {
         [Key]
         public int LabId { get; set; }
+
+        [Display(Name = "Nombre Laboratorio")]
         public string NameLab { get; set; }
+
+        [Display(Name = "Dirección")]
         public string DirLab { get; set; }
-        public MedicalSpeciality MedicalSpeciality { get; set; }
+
+        //[Display(Name = "Especialidad Médica")]
+        //public MedicalSpeciality MedicalSpeciality { get; set; }
+
+        [Display(Name = "Teléfono")]
         public int PhoneLab { get; set; }
     }
 }
