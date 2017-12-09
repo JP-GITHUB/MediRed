@@ -12,12 +12,12 @@ namespace MediRed.Models
 
         [Required]
         [StringLength(100, ErrorMessage = "Campo no puede superar los 100 caracteres.")]
-        [Display(Name = "Diagnostico")]
+        [Display(Name = "Diagnóstico")]
         public string Diagnostic { get; set; }
 
         [Required]
         [StringLength(50, ErrorMessage = "Campo no puede superar los 50 caracteres.")]
-        [Display(Name = "Tratatamiento")]
+        [Display(Name = "Tratamiento")]
         public string Treatment { get; set; }
     }
 }
