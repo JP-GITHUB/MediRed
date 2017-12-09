@@ -1,13 +1,12 @@
 ﻿@model MediRed.Models.Patient
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Detalles";
 }
 
-<h2>Details</h2>
+<h2>Detalles del Paciente</h2>
 
 <div>
-    <h4>Patient</h4>
     <hr />
     <dl class="dl-horizontal">
 
@@ -62,6 +61,6 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.PersonId }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Editar", "Edit", new { id = Model.PersonId }) |
+    @Html.ActionLink("Volver", "Index")
 </p>

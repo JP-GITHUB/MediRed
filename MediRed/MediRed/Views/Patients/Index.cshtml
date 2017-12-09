@@ -1,13 +1,13 @@
 ﻿@model IEnumerable<MediRed.Models.Patient>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Pacientes";
 }
 
 <h2>Index</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Crear Nuevo", "Create")
 </p>
 <table class="table">
     <tr>
@@ -53,9 +53,9 @@
             @Html.DisplayFor(modelItem => item.Treatment)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.PersonId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.PersonId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.PersonId })
+            @Html.ActionLink("Editar", "Edit", new { id=item.PersonId }) |
+            @Html.ActionLink("Detalles", "Details", new { id=item.PersonId }) |
+            @Html.ActionLink("Eliminar", "Delete", new { id=item.PersonId })
         </td>
     </tr>
 }
