@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<MediRed.Models.Medicine>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Medicamentos";
 }
 
 <h2>Lista de Medicamentos</h2>
@@ -37,7 +37,7 @@
         <td>
             @Html.ActionLink("Editar", "Edit", new { id=item.MedicineId }) |
             @Html.ActionLink("Detalles", "Details", new { id=item.MedicineId }) |
-            @Html.ActionLink("Borrar", "Delete", new { id=item.MedicineId })
+            @Html.ActionLink("Eliminar", "Delete", new { id=item.MedicineId })
         </td>
     </tr>
 }
