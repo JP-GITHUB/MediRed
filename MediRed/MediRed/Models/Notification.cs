@@ -12,6 +12,7 @@ namespace MediRed.Models
         [Key]
         public int NotificationId { get; set; }
 
+        [Required]
         [DataType(DataType.Date)]
         public DateTime Date { get; set; }
 
