@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<MediRed.Models.Laboratory>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Laboratorios";
 }
 
 <h2>Lista de Laboratorios</h2>
@@ -17,9 +17,9 @@
         <th>
             Dirección
         </th>
-        <th>
+        @*<th>
             Especialidad Médica
-        </th>
+        </th>*@
         <th>
             Teléfono
         </th>
@@ -34,9 +34,9 @@
         <td>
             @Html.DisplayFor(modelItem => item.DirLab)
         </td>
-        <td>
+        @*<td>
             @Html.DisplayFor(modelItem => item.MedicalSpeciality)
-        </td>
+        </td>*@
         <td>
             @Html.DisplayFor(modelItem => item.PhoneLab)
         </td>

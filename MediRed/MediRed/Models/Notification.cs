@@ -11,7 +11,11 @@ namespace MediRed.Models
     {
         [Key]
         public int NotificationId { get; set; }
+
+        [Required]
+        [DataType(DataType.Date)]
         public DateTime Date { get; set; }
+
         public Patient Patient { get; set; }                        
         public Diagnostic Diagnostic { get; set; }
         public AtentionCenter AtentionCenter { get; set; }

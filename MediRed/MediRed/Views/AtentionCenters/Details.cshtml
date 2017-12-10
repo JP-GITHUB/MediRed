@@ -1,13 +1,12 @@
 ﻿@model MediRed.Models.AtentionCenter
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Detalles Centro de Atención";
 }
 
-<h2>Details</h2>
+<h2>Detalles Centro de Atención</h2>
 
 <div>
-    <h4>AtentionCenter</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -37,6 +36,6 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.CenterId }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Editar", "Edit", new { id = Model.CenterId }) |
+    @Html.ActionLink("Volver", "Index")
 </p>

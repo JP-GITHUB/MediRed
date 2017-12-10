@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<MediRed.Models.AtentionCenter>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Centros de Atención";
 }
 
 <h2>Centros de Atención</h2>
@@ -36,8 +36,8 @@
         </td>
         <td>
             @Html.ActionLink("Editar", "Edit", new { id=item.CenterId }) |
-            @Html.ActionLink("Detales", "Details", new { id=item.CenterId }) |
-            @Html.ActionLink("Borrar", "Delete", new { id=item.CenterId })
+            @Html.ActionLink("Detalles", "Details", new { id=item.CenterId }) |
+            @Html.ActionLink("Eliminar", "Delete", new { id=item.CenterId })
         </td>
     </tr>
 }

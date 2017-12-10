@@ -10,6 +10,8 @@ namespace MediRed.Models
     {
         [Key]
         public int SpecialityId { get; set; }
+
+        [Display(Name = "Nombre Especialidad")]
         public string NameSpeciality { get; set; }
     }
 }
