@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using MediRed.Context;
 using MediRed.Models;
+using System.Web.Configuration;
 
 namespace MediRed.Controllers
 {
@@ -26,12 +27,14 @@ namespace MediRed.Controllers
         {
             if (id == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                ViewData["MsgError400"] = WebConfigurationManager.AppSettings["MsgError400"];
+                return View(WebConfigurationManager.AppSettings["Error400"]);
             }
             Medicine medicine = db.Medicines.Find(id);
             if (medicine == null)
             {
-                return HttpNotFound();
+                ViewData["MsgError404"] = WebConfigurationManager.AppSettings["MsgError404"];
+                return View(WebConfigurationManager.AppSettings["Error404"]);
             }
             return View(medicine);
         }
@@ -64,12 +67,14 @@ namespace MediRed.Controllers
         {
             if (id == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                ViewData["MsgError400"] = WebConfigurationManager.AppSettings["MsgError400"];
+                return View(WebConfigurationManager.AppSettings["Error400"]);
             }
             Medicine medicine = db.Medicines.Find(id);
             if (medicine == null)
             {
-                return HttpNotFound();
+                ViewData["MsgError404"] = WebConfigurationManager.AppSettings["MsgError404"];
+                return View(WebConfigurationManager.AppSettings["Error404"]);
             }
             return View(medicine);
         }
@@ -95,12 +100,14 @@ namespace MediRed.Controllers
         {
             if (id == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                ViewData["MsgError400"] = WebConfigurationManager.AppSettings["MsgError400"];
+                return View(WebConfigurationManager.AppSettings["Error400"]);
             }
             Medicine medicine = db.Medicines.Find(id);
             if (medicine == null)
             {
-                return HttpNotFound();
+                ViewData["MsgError404"] = WebConfigurationManager.AppSettings["MsgError404"];
+                return View(WebConfigurationManager.AppSettings["Error404"]);
             }
             return View(medicine);
         }
