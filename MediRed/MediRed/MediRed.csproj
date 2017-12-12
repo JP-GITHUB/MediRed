@@ -224,6 +224,13 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="img\img1.jpg" />
+    <Content Include="img\img2.jpg" />
+    <Content Include="img\img3.jpg" />
+    <Content Include="img\img4.jfif" />
+    <Content Include="img\img5.jpg" />
+    <Content Include="img\img6.png" />
+    <Content Include="img\imgr.jpg" />
     <Content Include="img\logo-main.png" />
     <Content Include="img\logo-re.png" />
     <Content Include="img\logo-sub.png" />
@@ -235,8 +242,6 @@
     <Content Include="img\portfolio\game.png" />
     <Content Include="img\portfolio\safe.png" />
     <Content Include="img\portfolio\submarine.png" />
-    <Content Include="Scripts\bootstrap.bundle.js" />
-    <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Content\font-awesome\fonts\fontawesome-webfont.eot" />
@@ -273,7 +278,7 @@
     <Content Include="Content\font-awesome\scss\_stacked.scss" />
     <Content Include="Content\font-awesome\scss\_variables.scss" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
-    <Content Include="Scripts\freelancer.min.js" />
+    <Content Include="Scripts\index.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
