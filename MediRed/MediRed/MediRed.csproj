@@ -185,7 +185,6 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MedicalSpecialitiesController.cs" />
     <Compile Include="Controllers\MedicinesController.cs" />
-    <Compile Include="Controllers\NotificationsController.cs" />
     <Compile Include="Controllers\PatientsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -201,7 +200,6 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\MedicalSpeciality.cs" />
     <Compile Include="Models\Medicine.cs" />
-    <Compile Include="Models\Notification.cs" />
     <Compile Include="Models\Patient.cs" />
     <Compile Include="Models\Person.cs" />
     <Compile Include="Models\Technologist.cs" />
@@ -347,16 +345,13 @@
     <Content Include="Views\MedicalSpecialities\Details.cshtml" />
     <Content Include="Views\MedicalSpecialities\Edit.cshtml" />
     <Content Include="Views\MedicalSpecialities\Index.cshtml" />
-    <Content Include="Views\Notifications\Create.cshtml" />
-    <Content Include="Views\Notifications\Delete.cshtml" />
-    <Content Include="Views\Notifications\Details.cshtml" />
-    <Content Include="Views\Notifications\Edit.cshtml" />
-    <Content Include="Views\Notifications\Index.cshtml" />
     <Content Include="Views\Patients\Create.cshtml" />
     <Content Include="Views\Patients\Delete.cshtml" />
     <Content Include="Views\Patients\Details.cshtml" />
     <Content Include="Views\Patients\Edit.cshtml" />
     <Content Include="Views\Patients\Index.cshtml" />
+    <Content Include="Views\CustomViews\400.cshtml" />
+    <Content Include="Views\CustomViews\404.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

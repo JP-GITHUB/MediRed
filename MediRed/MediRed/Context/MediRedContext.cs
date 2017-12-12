@@ -27,8 +27,6 @@ namespace MediRed.Context
 
         public System.Data.Entity.DbSet<MediRed.Models.MedicalSpeciality> MedicalSpecialities { get; set; }
 
-        public System.Data.Entity.DbSet<MediRed.Models.Notification> Notifications { get; set; }
-
         public System.Data.Entity.DbSet<MediRed.Models.Patient> Patients { get; set; }
     }
 }

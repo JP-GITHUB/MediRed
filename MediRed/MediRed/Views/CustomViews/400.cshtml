@@ -1,0 +1,12 @@
+﻿
+@{
+    ViewBag.Title = "Error 400";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var msgError = (ViewData["MsgError400"] ?? string.Empty) as string;
+}
+
+<h2>Error 400</h2>
+
+<br/>
+
+@msgError
