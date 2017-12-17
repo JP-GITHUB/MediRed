@@ -312,8 +312,8 @@
     <Content Include="Views\Patients\Index.cshtml" />
     <Content Include="Views\CustomViews\400.cshtml" />
     <Content Include="Views\CustomViews\404.cshtml" />
-    <Content Include="Views\SetRoles\Index.cshtml" />
-    <Content Include="Views\SetRoles\Roles.cshtml" />
+    <Content Include="Views\Medicines\SetRoles\Index.cshtml" />
+    <Content Include="Views\Medicines\SetRoles\Roles.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
