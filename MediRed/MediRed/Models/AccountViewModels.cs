@@ -64,6 +64,8 @@ namespace MediRed.Models
 
     public class RegisterViewModel
     {
+       
+
         [Required]
         [EmailAddress]
         [Display(Name = "Correo electrónico")]
