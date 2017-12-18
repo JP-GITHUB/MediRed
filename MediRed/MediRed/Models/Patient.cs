@@ -8,8 +8,6 @@ namespace MediRed.Models
 {
     public class Patient: Person
     {
-        //public Diagnostic Diagnostic { get; set; }
-
         [Required]
         [StringLength(100, ErrorMessage = "Campo no puede superar los 100 caracteres.")]
         [Display(Name = "Diagnóstico")]

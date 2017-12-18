@@ -8,8 +8,6 @@ using System.Web;
 using System.Web.Mvc;
 using MediRed.Context;
 using MediRed.Models;
-using System.Web.Configuration;
-using System.Diagnostics;
 
 namespace MediRed.Controllers
 {
@@ -20,7 +18,8 @@ namespace MediRed.Controllers
         // GET: Patients
         public ActionResult Index()
         {
-            return View(db.Patients.ToList());
+            var patient = db.Patient.Include(p => p.Country);
+            return View(patient.ToList());
         }
 
         // GET: Patients/Details/5
@@ -28,14 +27,12 @@ namespace MediRed.Controllers
         {
             if (id == null)
             {
-                ViewData["MsgError400"] = WebConfigurationManager.AppSettings["MsgError400"];
-                return View(WebConfigurationManager.AppSettings["Error400"]);
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Patient patient = db.Patients.Find(id);
+            Patient patient = db.Patient.Find(id);
             if (patient == null)
             {
-                ViewData["MsgError404"] = WebConfigurationManager.AppSettings["MsgError404"];
-                return View(WebConfigurationManager.AppSettings["Error404"]);
+                return HttpNotFound();
             }
             return View(patient);
         }
@@ -43,6 +40,7 @@ namespace MediRed.Controllers
         // GET: Patients/Create
         public ActionResult Create()
         {
+            ViewBag.IdCountry = new SelectList(db.Countries, "IdCountry", "Name");
             return View();
         }
 
@@ -51,15 +49,16 @@ namespace MediRed.Controllers
         // más información vea http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "PersonId,Diagnostic,Treatment,Name,LastName,Email,Phone")] Patient patient)
+        public ActionResult Create([Bind(Include = "PersonId,Name,LastName,Email,Phone,IdCountry,Diagnostic,Treatment")] Patient patient)
         {
             if (ModelState.IsValid)
             {
-                db.Patients.Add(patient);
+                db.Patient.Add(patient);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
+            ViewBag.IdCountry = new SelectList(db.Countries, "IdCountry", "Name", patient.IdCountry);
             return View(patient);
         }
 
@@ -68,15 +67,14 @@ namespace MediRed.Controllers
         {
             if (id == null)
             {
-                ViewData["MsgError400"] = WebConfigurationManager.AppSettings["MsgError400"];
-                return View(WebConfigurationManager.AppSettings["Error400"]);
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Patient patient = db.Patients.Find(id);
+            Patient patient = db.Patient.Find(id);
             if (patient == null)
             {
-                ViewData["MsgError404"] = WebConfigurationManager.AppSettings["MsgError404"];
-                return View(WebConfigurationManager.AppSettings["Error404"]);
+                return HttpNotFound();
             }
+            ViewBag.IdCountry = new SelectList(db.Countries, "IdCountry", "Name", patient.IdCountry);
             return View(patient);
         }
 
@@ -85,7 +83,7 @@ namespace MediRed.Controllers
         // más información vea http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "PersonId,Diagnostic,Treatment,Name,LastName,Email,Phone")] Patient patient)
+        public ActionResult Edit([Bind(Include = "PersonId,Name,LastName,Email,Phone,IdCountry,Diagnostic,Treatment")] Patient patient)
         {
             if (ModelState.IsValid)
             {
@@ -93,6 +91,7 @@ namespace MediRed.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            ViewBag.IdCountry = new SelectList(db.Countries, "IdCountry", "Name", patient.IdCountry);
             return View(patient);
         }
 
@@ -101,14 +100,12 @@ namespace MediRed.Controllers
         {
             if (id == null)
             {
-                ViewData["MsgError400"] = WebConfigurationManager.AppSettings["MsgError400"];
-                return View(WebConfigurationManager.AppSettings["Error400"]);
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Patient patient = db.Patients.Find(id);
+            Patient patient = db.Patient.Find(id);
             if (patient == null)
             {
-                ViewData["MsgError404"] = WebConfigurationManager.AppSettings["MsgError404"];
-                return View(WebConfigurationManager.AppSettings["Error404"]);
+                return HttpNotFound();
             }
             return View(patient);
         }
@@ -118,8 +115,8 @@ namespace MediRed.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Patient patient = db.Patients.Find(id);
-            db.Patients.Remove(patient);
+            Patient patient = db.Patient.Find(id);
+            db.Patient.Remove(patient);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

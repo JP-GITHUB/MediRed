@@ -27,6 +27,8 @@ namespace MediRed.Context
 
         public System.Data.Entity.DbSet<MediRed.Models.MedicalSpeciality> MedicalSpecialities { get; set; }
 
-        public System.Data.Entity.DbSet<MediRed.Models.Patient> Patients { get; set; }
+        public System.Data.Entity.DbSet<MediRed.Models.Patient> Patient { get; set; }
+
+        public System.Data.Entity.DbSet<MediRed.Models.Country> Countries { get; set; }
     }
 }

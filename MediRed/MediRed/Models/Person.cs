@@ -26,13 +26,10 @@ namespace MediRed.Models
         [Display(Name="Teléfono")]
         public int Phone{ get; set; }
 
-        [Display(Name = "Nombre Completo")]
-        public string FullName
-        {
-            get
-            {
-                return Name + " " + LastName;
-            }
-        }
+        public int? IdCountry { get; set; }
+
+        [ForeignKey("IdCountry")]
+        public virtual Country Country { get; set; }
+
     }
 }
