@@ -29,45 +29,29 @@ namespace MediRed
         }
         //Crear superusuario 
         private void CreateSU(ApplicationDbContext db)
-        {
+        {        
             var userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(db));
             var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(db));
 
-            // Primero se crea el rol de administrador y se crea un usuario admin por defecto
-            if (!roleManager.RoleExists("Admin"))
-            {
-                var role = new IdentityRole();
-                role.Name = "Admin";
-                roleManager.Create(role);
-            }
-            //Aqui creamos un administrador con permisos de superusuario      
-                var user = new ApplicationUser(); 
-                user.Id = "ecmcaceres@gmail.com";
-                string userPWD = "Evelyn2017";
+            var role = new IdentityRole();
+            var user = new ApplicationUser();
 
-                //se crea variable superusuario para agregar en usermanager
-                var chkUser = userManager.Create(user, userPWD);
+            user.Id = "ecmcaceres@gmail.com";
+            user.UserName = "SuperUserName";
 
-                //se agrega al usuario por defecto el rol de administrador
-                 if (chkUser.Succeeded)
-                    {
-                       var superUser = userManager.AddToRole(user.Id, "Admin");
-                    }
-                    //Si la creación del usuario es correcta, se agrega rol de administrador a usuario por defecto
-                    var result = userManager.AddToRole(user.Id, "Admin");          
-            }
-        //Setear roles de superusuario
+          
+        }
+        //setear roles de superuser
         private void SetRolesSU(ApplicationDbContext db)
         {
             var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(db));
             var userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(db));
 
-            var user = new ApplicationUser();
-            var superUser = userManager.FindByName(ConfigurationManager.AppSettings["SuperUser"]);
-
-            if (!userManager.IsInRole(user.Id, "View"))
+            var user = userManager.FindByName(ConfigurationManager.AppSettings["SuperUserName"]);
+            
+            if(!userManager.IsInRole(user.Id,"View"))
             {
-                userManager.AddToRole(user.Id, "View");
+                userManager.AddToRole(user.Id,"View");
             }
             if (!userManager.IsInRole(user.Id, "Create"))
             {
@@ -82,26 +66,9 @@ namespace MediRed
                 userManager.AddToRole(user.Id, "Delete");
             }
         }
-          private void CreateRoles(ApplicationDbContext db)
-        {
-            ApplicationDbContext context = new ApplicationDbContext();
+        private void CreateRoles(ApplicationDbContext db)
+        {   
 
-            var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(context));
-
-            // Crear el rol de Médico
-            if (!roleManager.RoleExists("Medic"))
-            {
-                var role = new IdentityRole();
-                role.Name = "Medic";
-                roleManager.Create(role);
-            }
-            // Crear el rol de Paciente
-            if (!roleManager.RoleExists("Patient"))
-            {
-                var role = new IdentityRole();
-                role.Name = "Patient";
-                roleManager.Create(role);
-            }
         }
     }   
 }
