@@ -7,7 +7,7 @@ namespace MediRed.Models
 {
     public class Technologist: Person
     {
-        public MedicalSpeciality SpecialityTech { get; set; }
+        public Speciality SpecialityTech { get; set; }
         public Laboratory LabWork { get; set; }
     }
 }       

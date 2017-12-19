@@ -11,112 +11,107 @@ using MediRed.Models;
 
 namespace MediRed.Controllers
 {
-    public class PatientsController : Controller
+    public class CountriesController : Controller
     {
         private MediRedContext db = new MediRedContext();
 
-        // GET: Patients
+        // GET: Countries
         public ActionResult Index()
         {
-            var patient = db.Patient.Include(p => p.Country);
-            return View(patient.ToList());
+            return View(db.Countries.ToList());
         }
 
-        // GET: Patients/Details/5
+        // GET: Countries/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Patient patient = db.Patient.Find(id);
-            if (patient == null)
+            Country country = db.Countries.Find(id);
+            if (country == null)
             {
                 return HttpNotFound();
             }
-            return View(patient);
+            return View(country);
         }
 
-        // GET: Patients/Create
+        // GET: Countries/Create
         public ActionResult Create()
         {
-            ViewBag.IdCountry = new SelectList(db.Countries, "IdCountry", "Name");
             return View();
         }
 
-        // POST: Patients/Create
+        // POST: Countries/Create
         // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
         // más información vea http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "PersonId,Diagnostic,Treatment,Name,LastName,Email,Phone,IdCountry")] Patient patient)
+        public ActionResult Create([Bind(Include = "IdCountry,Name,Detail")] Country country)
         {
             if (ModelState.IsValid)
             {
-                db.Patient.Add(patient);
+                db.Countries.Add(country);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.IdCountry = new SelectList(db.Countries, "IdCountry", "Name", patient.IdCountry);
-            return View(patient);
+            return View(country);
         }
 
-        // GET: Patients/Edit/5
+        // GET: Countries/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Patient patient = db.Patient.Find(id);
-            if (patient == null)
+            Country country = db.Countries.Find(id);
+            if (country == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.IdCountry = new SelectList(db.Countries, "IdCountry", "Name", patient.IdCountry);
-            return View(patient);
+            return View(country);
         }
 
-        // POST: Patients/Edit/5
+        // POST: Countries/Edit/5
         // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
         // más información vea http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "PersonId,Diagnostic,Treatment,Name,LastName,Email,Phone,IdCountry")] Patient patient)
+        public ActionResult Edit([Bind(Include = "IdCountry,Name,Detail")] Country country)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(patient).State = EntityState.Modified;
+                db.Entry(country).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.IdCountry = new SelectList(db.Countries, "IdCountry", "Name", patient.IdCountry);
-            return View(patient);
+            return View(country);
         }
 
-        // GET: Patients/Delete/5
+        // GET: Countries/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Patient patient = db.Patient.Find(id);
-            if (patient == null)
+            Country country = db.Countries.Find(id);
+            if (country == null)
             {
                 return HttpNotFound();
             }
-            return View(patient);
+            return View(country);
         }
 
-        // POST: Patients/Delete/5
+        // POST: Countries/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Patient patient = db.Patient.Find(id);
-            db.Patient.Remove(patient);
+            Country country = db.Countries.Find(id);
+            db.Countries.Remove(country);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

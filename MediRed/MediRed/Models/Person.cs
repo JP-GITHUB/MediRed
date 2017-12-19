@@ -25,7 +25,7 @@ namespace MediRed.Models
 
         [Display(Name="Teléfono")]
         public int Phone{ get; set; }
-
+        
         public int? IdCountry { get; set; }
 
         [ForeignKey("IdCountry")]

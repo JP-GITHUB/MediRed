@@ -12,8 +12,13 @@ namespace MediRed.Models
         [Key]
         public int IdCountry { get; set; }
 
+        [Required]
+        [StringLength(50, ErrorMessage = "Campo no puede superar los 50 caracteres.")]
+        [Display(Name = "Nombre")]
         public string Name { get; set; }
 
+        [StringLength(100, ErrorMessage = "Campo no puede superar los 100 caracteres.")]
+        [Display(Name = "Detalle")]
         public string Detail { get; set; }
 
         //public ICollection<Person> People { get; set; }
