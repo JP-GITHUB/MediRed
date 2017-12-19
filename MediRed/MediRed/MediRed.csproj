@@ -186,7 +186,7 @@
     <Compile Include="Controllers\MedicalSpecialitiesController.cs" />
     <Compile Include="Controllers\MedicinesController.cs" />
     <Compile Include="Controllers\PatientsController.cs" />
-    <Compile Include="Controllers\SetRolesController.cs" />
+    <Compile Include="Controllers\RoleController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -251,7 +251,9 @@
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="404.html" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -312,8 +314,7 @@
     <Content Include="Views\Patients\Index.cshtml" />
     <Content Include="Views\CustomViews\400.cshtml" />
     <Content Include="Views\CustomViews\404.cshtml" />
-    <Content Include="Views\SetRoles\Index.cshtml" />
-    <Content Include="Views\SetRoles\Roles.cshtml" />
+    <Content Include="Views\Role\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
