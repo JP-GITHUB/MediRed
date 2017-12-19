@@ -1,0 +1,35 @@
+﻿@model ICollection<MediRed.Models.UserViewModel>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Asignar Roles</h2>
+<p>
+    @Html.ActionLink("Agregar un nuevo Rol", "Role")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.First().UserName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().Email)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.ActionLink("Roles", "Roles", new { id = item.UserId })
+            </td>
+        </tr>
+    }
+</table>

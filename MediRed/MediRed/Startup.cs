@@ -12,50 +12,49 @@ namespace MediRed
         public void Configuration(IAppBuilder app)
         {
             ConfigureAuth(app);
+            createRolesandUsers();
         }
 
-        // En este métoso se crearán los roles por defecto de los usuarios y un usuario administrador que sea superusurio
-        private void CreateRoles()
+        private void createRolesandUsers()
         {
             ApplicationDbContext context = new ApplicationDbContext();
 
             var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(context));
             var UserManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(context));
 
-            // Se crea primero el rol de administrador y un usuario por defecto que tenga este rol 
-            if (!roleManager.RoleExists("Admin"))
-            {
-                // primero se crea el rol de administrador
-                var role = new IdentityRole();
-                role.Name = "Admin";
-                roleManager.Create(role);
+            // Se crea un administrador y un usuario por defecto
+            //if (!roleManager.RoleExists("Admin"))
+            //{
 
-                //se crea el superusuario para asignarle el rol de administrador
+            //    // Primero creamos el rol administrador
+            //    var role = new IdentityRole();
+            //    role.Name = "Admin";
+            //    roleManager.Create(role);
 
-                var user = new ApplicationUser();
-                user.Id = "ecmcaceres@gmail.com";
-                user.UserName = "Admin";             
+            //    //Se crea el superusuario		
 
-                string userPWD = "Aiep2017,";
+            //    var user = new ApplicationUser();
+            //    user.UserName = " SuperUsuario";
+            //    user.Id = "ecmcaceres@gmail.com";
+            //    string userPWD = "Eve666.";
 
-                var chkUser = UserManager.Create(user, userPWD);
+            //    var chkUser = UserManager.Create(user, userPWD);
 
-                //se crea el usuario por defecto que tenga el rol de administrador
-                if (chkUser.Succeeded)
-                {
-                    var result1 = UserManager.AddToRole(user.Id, "Admin");
-                }
-            }
+            //    //se agrega el rol administrador al superusuario
+            //    if (chkUser.Succeeded)
+            //    {
+            //        var result1 = UserManager.AddToRole(user.Id, "Admin");
+            //    }
+            //}
 
-            // se crea el rol de médico
+            // Se crea el Perfil de Médico
             if (!roleManager.RoleExists("Médico"))
             {
                 var role = new IdentityRole();
                 role.Name = "Médico";
                 roleManager.Create(role);
             }
-
-            // se crea el rol de paciente
+            // Se crea el Rol de Paciente
             if (!roleManager.RoleExists("Paciente"))
             {
                 var role = new IdentityRole();
