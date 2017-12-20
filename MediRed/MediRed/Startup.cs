@@ -22,31 +22,6 @@ namespace MediRed
             var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(context));
             var UserManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(context));
 
-            // Se crea un administrador y un usuario por defecto
-            //if (!roleManager.RoleExists("Admin"))
-            //{
-
-            //    // Primero creamos el rol administrador
-            //    var role = new IdentityRole();
-            //    role.Name = "Admin";
-            //    roleManager.Create(role);
-
-            //    //Se crea el superusuario		
-
-            //    var user = new ApplicationUser();
-            //    user.UserName = " SuperUsuario";
-            //    user.Id = "ecmcaceres@gmail.com";
-            //    string userPWD = "Eve666.";
-
-            //    var chkUser = UserManager.Create(user, userPWD);
-
-            //    //se agrega el rol administrador al superusuario
-            //    if (chkUser.Succeeded)
-            //    {
-            //        var result1 = UserManager.AddToRole(user.Id, "Admin");
-            //    }
-            //}
-
             // Se crea el Perfil de Médico
             if (!roleManager.RoleExists("Médico"))
             {

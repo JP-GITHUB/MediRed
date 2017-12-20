@@ -7,7 +7,7 @@
 <h2>Roles del Usuario : @Model.UserName</h2>
 <p>
     @Html.ActionLink("Volver a la lista", "Index") |
-    @Html.ActionLink("Agregar Rol", "AddRole")
+    @Html.ActionLink("Agregar Rol", "AddRole", new { id= Model.UserId})
 </p>
 <table class="table">
     <tr>
@@ -21,7 +21,7 @@
     {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.RoleId)
+                @Html.DisplayFor(modelItem => item.RoleName)
             </td>
             <td>
                 @Html.ActionLink("Eliminar", "DeleteRole", new { id = item.RoleId })

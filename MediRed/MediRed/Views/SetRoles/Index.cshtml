@@ -3,7 +3,7 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Asignar Roles</h2>
+<h2>Asignar Roles a Usuarios</h2>
 <p>
     @Html.ActionLink("Agregar un nuevo Rol", "Role")
 </p>
@@ -28,7 +28,7 @@
                 @Html.DisplayFor(modelItem => item.Email)
             </td>
             <td>
-                @Html.ActionLink("Roles", "Roles", new { id = item.UserId })
+                @Html.ActionLink("Roles de Usuario", "Roles", new { id = item.UserId })
             </td>
         </tr>
     }
