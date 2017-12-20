@@ -137,5 +137,42 @@ namespace MediRed.Controllers
             //se retorna a la vista de roles con el usuario al que se le asigno el rol
             return View("Roles", userVm);
         }
+
+        public ActionResult DeleteRole (string userId, string roleId)
+        {
+            var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(db));
+            var userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(db));
+            var user = userManager.FindById(userId);
+            var role = roleManager.FindById(roleId);
+
+            if (userManager.IsInRole(user.Id, role.Name))
+            {
+                userManager.RemoveFromRoles(user.Id, role.Name);
+            }
+
+            //Se construye la lista de roles
+
+            var lstRoleVm = new List<RoleViewModel>();
+            foreach (var roleUser in user.Roles)
+            {
+                var roleU = roleManager.FindById(roleUser.RoleId);
+                var newRolVm = new RoleViewModel()
+                {
+                    RoleId = roleU.Id,
+                    RoleName = roleU.Name
+                };
+
+                lstRoleVm.Add(newRolVm);
+            }
+            var userVm = new UserViewModel()
+            {
+                UserId = user.Id,
+                Email = user.Email,
+                UserName = user.UserName,
+                Roles = lstRoleVm
+            };
+            //se retorna a la vista de roles una vez removido el rol del usuario
+            return View("Roles", userVm);
+        }    
     }
 }

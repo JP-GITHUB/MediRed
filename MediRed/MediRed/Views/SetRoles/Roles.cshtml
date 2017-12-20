@@ -24,7 +24,7 @@
                 @Html.DisplayFor(modelItem => item.RoleName)
             </td>
             <td>
-                @Html.ActionLink("Eliminar", "DeleteRole", new { id = item.RoleId })
+                @Html.ActionLink("Eliminar", "DeleteRole", new { userId = Model.UserId, roleId = item.RoleId })
             </td>
         </tr>
     }
