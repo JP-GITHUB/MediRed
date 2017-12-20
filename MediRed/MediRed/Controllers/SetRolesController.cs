@@ -173,6 +173,13 @@ namespace MediRed.Controllers
             };
             //se retorna a la vista de roles una vez removido el rol del usuario
             return View("Roles", userVm);
-        }    
+        }
+        public ActionResult NewRole()
+        {
+
+
+            return View();
+        }
+             
     }
 }

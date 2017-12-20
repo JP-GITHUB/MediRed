@@ -3,9 +3,20 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Asignar Roles a Usuarios</h2>
+<h2>Asignar roles a usuarios</h2>
+<br />
 <p>
-    @Html.ActionLink("Agregar un nuevo Rol", "Role")
+    Encontrará a continuación los usuarios del sistema médico. <br/>
+    Aquí puede: <br />
+    <ul>
+        <li>Modificar los roles de los usuarios</li>
+        <li>Agregar un nuevo rol al sistema</li>
+    </ul>
+
+</p>
+<br />
+<p>
+    @Html.ActionLink("Agregar un nuevo rol al sistema", "NewRole")
 </p>
 <table class="table">
     <tr>

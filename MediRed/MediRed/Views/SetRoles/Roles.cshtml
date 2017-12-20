@@ -5,10 +5,12 @@
 }
 
 <h2>Roles del Usuario : @Model.UserName</h2>
+<br>
 <p>
-    @Html.ActionLink("Volver a la lista", "Index") |
-    @Html.ActionLink("Agregar Rol", "AddRole", new { id= Model.UserId})
+    En este menú, puede agregar un rol existente al Usuario seleccionado, o si se requiere, remover un rol del mismo
 </p>
+<br />
+<h4>Lista de roles asignados al usuario</h4>
 <table class="table">
     <tr>
         <th>
@@ -24,8 +26,13 @@
                 @Html.DisplayFor(modelItem => item.RoleName)
             </td>
             <td>
+                @Html.ActionLink("Asignar un nuevo rol al usuario", "AddRole", new { id = Model.UserId }) | 
                 @Html.ActionLink("Eliminar", "DeleteRole", new { userId = Model.UserId, roleId = item.RoleId })
             </td>
         </tr>
     }
 </table>
+<br />
+<p>
+    @Html.ActionLink("Volver", "Index")
+</p>
