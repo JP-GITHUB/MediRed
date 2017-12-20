@@ -18,8 +18,8 @@ namespace MediRed.Controllers
         // GET: Patients
         public ActionResult Index()
         {
-            var patient = db.Patient.Include(p => p.Country);
-            return View(patient.ToList());
+            var patients = db.Patients.Include(p => p.Country);
+            return View(patients.ToList());
         }
 
         // GET: Patients/Details/5
@@ -29,7 +29,7 @@ namespace MediRed.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Patient patient = db.Patient.Find(id);
+            Patient patient = db.Patients.Find(id);
             if (patient == null)
             {
                 return HttpNotFound();
@@ -40,7 +40,7 @@ namespace MediRed.Controllers
         // GET: Patients/Create
         public ActionResult Create()
         {
-            ViewBag.IdCountry = new SelectList(db.Countries, "IdCountry", "Name");
+            ViewBag.IdCountry = new SelectList(db.Countries, "CountryId", "Name");
             return View();
         }
 
@@ -49,16 +49,16 @@ namespace MediRed.Controllers
         // más información vea http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "PersonId,Diagnostic,Treatment,Name,LastName,Email,Phone,IdCountry")] Patient patient)
+        public ActionResult Create([Bind(Include = "PersonId,BloodType,Welfare,FirstName,LastName,ContactEmail,ContactNumber,IdCountry")] Patient patient)
         {
             if (ModelState.IsValid)
             {
-                db.Patient.Add(patient);
+                db.Patients.Add(patient);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.IdCountry = new SelectList(db.Countries, "IdCountry", "Name", patient.IdCountry);
+            ViewBag.IdCountry = new SelectList(db.Countries, "CountryId", "Name", patient.IdCountry);
             return View(patient);
         }
 
@@ -69,12 +69,12 @@ namespace MediRed.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Patient patient = db.Patient.Find(id);
+            Patient patient = db.Patients.Find(id);
             if (patient == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.IdCountry = new SelectList(db.Countries, "IdCountry", "Name", patient.IdCountry);
+            ViewBag.IdCountry = new SelectList(db.Countries, "CountryId", "Name", patient.IdCountry);
             return View(patient);
         }
 
@@ -83,7 +83,7 @@ namespace MediRed.Controllers
         // más información vea http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "PersonId,Diagnostic,Treatment,Name,LastName,Email,Phone,IdCountry")] Patient patient)
+        public ActionResult Edit([Bind(Include = "PersonId,BloodType,Welfare,FirstName,LastName,ContactEmail,ContactNumber,IdCountry")] Patient patient)
         {
             if (ModelState.IsValid)
             {
@@ -91,7 +91,7 @@ namespace MediRed.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.IdCountry = new SelectList(db.Countries, "IdCountry", "Name", patient.IdCountry);
+            ViewBag.IdCountry = new SelectList(db.Countries, "CountryId", "Name", patient.IdCountry);
             return View(patient);
         }
 
@@ -102,7 +102,7 @@ namespace MediRed.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Patient patient = db.Patient.Find(id);
+            Patient patient = db.Patients.Find(id);
             if (patient == null)
             {
                 return HttpNotFound();
@@ -115,8 +115,8 @@ namespace MediRed.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Patient patient = db.Patient.Find(id);
-            db.Patient.Remove(patient);
+            Patient patient = db.Patients.Find(id);
+            db.Patients.Remove(patient);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

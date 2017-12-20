@@ -306,16 +306,16 @@
     <Content Include="Views\Countries\Details.cshtml" />
     <Content Include="Views\Countries\Edit.cshtml" />
     <Content Include="Views\Countries\Index.cshtml" />
-    <Content Include="Views\Medics\Create.cshtml" />
-    <Content Include="Views\Medics\Delete.cshtml" />
-    <Content Include="Views\Medics\Details.cshtml" />
-    <Content Include="Views\Medics\Edit.cshtml" />
-    <Content Include="Views\Medics\Index.cshtml" />
     <Content Include="Views\Patients\Create.cshtml" />
     <Content Include="Views\Patients\Delete.cshtml" />
     <Content Include="Views\Patients\Details.cshtml" />
     <Content Include="Views\Patients\Edit.cshtml" />
     <Content Include="Views\Patients\Index.cshtml" />
+    <Content Include="Views\Medics\Create.cshtml" />
+    <Content Include="Views\Medics\Delete.cshtml" />
+    <Content Include="Views\Medics\Details.cshtml" />
+    <Content Include="Views\Medics\Edit.cshtml" />
+    <Content Include="Views\Medics\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

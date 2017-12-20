@@ -47,7 +47,7 @@ namespace MediRed.Controllers
         // más información vea http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "IdCountry,Name,Detail")] Country country)
+        public ActionResult Create([Bind(Include = "CountryId,Name,Detail")] Country country)
         {
             if (ModelState.IsValid)
             {
@@ -79,7 +79,7 @@ namespace MediRed.Controllers
         // más información vea http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "IdCountry,Name,Detail")] Country country)
+        public ActionResult Edit([Bind(Include = "CountryId,Name,Detail")] Country country)
         {
             if (ModelState.IsValid)
             {

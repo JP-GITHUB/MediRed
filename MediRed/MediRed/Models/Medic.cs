@@ -7,7 +7,9 @@ namespace MediRed.Models
 {
     public class Medic: Person
     {
-        public Speciality Speciality { get; set; }
+        public int SpecialityId { get; set; }
+
+        public virtual Speciality Speciality { get; set; }
     }   
 
 }
