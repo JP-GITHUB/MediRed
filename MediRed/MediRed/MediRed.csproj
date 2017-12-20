@@ -318,7 +318,7 @@
     <Content Include="Views\SetRoles\Index.cshtml" />
     <Content Include="Views\SetRoles\Roles.cshtml" />
     <Content Include="Views\SetRoles\AddRole.cshtml" />
-    <Content Include="Views\SetRoles\NewRole.cshtml" />
+    <Content Include="Views\SetRoles\CreateRole.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

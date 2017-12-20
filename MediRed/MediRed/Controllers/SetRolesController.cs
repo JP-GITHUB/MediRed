@@ -30,6 +30,10 @@ namespace MediRed.Controllers
             }
             return View(lstUserVm);
         }
+        public ActionResult CreateRole()
+        {
+            return View();
+        }
         public ActionResult Roles(string id)
         {
             var userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(db));
@@ -174,12 +178,34 @@ namespace MediRed.Controllers
             //se retorna a la vista de roles una vez removido el rol del usuario
             return View("Roles", userVm);
         }
-        public ActionResult NewRole()
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult CreateRole(string RoleName, FormCollection frm)
         {
+            //Instanciar un manager de roles
+            var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(db));
 
+            if (!roleManager.RoleExists(RoleName))
+            {
+                //var role = roleManager.FindByName(newRole);
+                var rol = new IdentityRole();
+                rol.Name = RoleName;
+                roleManager.Create(rol);
+            }
+            var userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(db));
+            var lstUserVm = new List<UserViewModel>();
 
-            return View();
+            foreach (var user in userManager.Users)
+            {
+                var userVm = new UserViewModel()
+                {
+                    UserId = user.Id,
+                    UserName = user.UserName,
+                    Email = user.Email
+                };
+                lstUserVm.Add(userVm);
+            }
+            return View("Index", lstUserVm);
         }
-             
-    }
+    }      
 }
