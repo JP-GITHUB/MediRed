@@ -6,7 +6,18 @@ namespace MediRed.Models
     {
         [Key]
         public int DiagnosticId { get; set; }
-        public string NameDiagnostic { get; set; }
+        
         public string Description { get; set; }
+
+        public bool RedDiagnostic { get; set; }
+
+        public int TreatmentId { get; set; }
+
+        public virtual Treatment Treatment { get; set; }
+
+        public bool ValidateRedDiagnostic()
+        {
+            return true;
+        }
     }
 }       
