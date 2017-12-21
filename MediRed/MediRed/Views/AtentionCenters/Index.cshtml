@@ -1,24 +1,21 @@
 ﻿@model IEnumerable<MediRed.Models.AtentionCenter>
 
 @{
-    ViewBag.Title = "Centros de Atención";
+    ViewBag.Title = "Index";
 }
 
-<h2>Centros de Atención</h2>
+<h2>Index</h2>
 
 <p>
-    @Html.ActionLink("Agregar Centro de Atención", "Create")
+    @Html.ActionLink("Create New", "Create")
 </p>
 <table class="table">
     <tr>
         <th>
-            Nombre del Centro
+            @Html.DisplayNameFor(model => model.Address)
         </th>
         <th>
-            Dirección
-        </th>
-        <th>
-            Teléfono
+            @Html.DisplayNameFor(model => model.PhoneCener)
         </th>
         <th></th>
     </tr>
@@ -26,18 +23,15 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.NameCenter)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DirCenter)
+            @Html.DisplayFor(modelItem => item.Address)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.PhoneCener)
         </td>
         <td>
-            @Html.ActionLink("Editar", "Edit", new { id=item.CenterId }) |
-            @Html.ActionLink("Detalles", "Details", new { id=item.CenterId }) |
-            @Html.ActionLink("Eliminar", "Delete", new { id=item.CenterId })
+            @Html.ActionLink("Edit", "Edit", new { id=item.AtentionCenterId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.AtentionCenterId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.AtentionCenterId })
         </td>
     </tr>
 }

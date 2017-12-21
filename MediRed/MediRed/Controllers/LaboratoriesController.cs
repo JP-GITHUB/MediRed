@@ -8,7 +8,6 @@ using System.Web;
 using System.Web.Mvc;
 using MediRed.Context;
 using MediRed.Models;
-using System.Web.Configuration;
 
 namespace MediRed.Controllers
 {
@@ -27,14 +26,12 @@ namespace MediRed.Controllers
         {
             if (id == null)
             {
-                ViewData["MsgError400"] = WebConfigurationManager.AppSettings["MsgError400"];
-                return View(WebConfigurationManager.AppSettings["Error400"]);
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Laboratory laboratory = db.Laboratories.Find(id);
             if (laboratory == null)
             {
-                ViewData["MsgError404"] = WebConfigurationManager.AppSettings["MsgError404"];
-                return View(WebConfigurationManager.AppSettings["Error404"]);
+                return HttpNotFound();
             }
             return View(laboratory);
         }
@@ -50,7 +47,7 @@ namespace MediRed.Controllers
         // más información vea http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "LabId,NameLab,DirLab,MedicalSpeciality,PhoneLab")] Laboratory laboratory)
+        public ActionResult Create([Bind(Include = "LaboratoryId,Name,Description")] Laboratory laboratory)
         {
             if (ModelState.IsValid)
             {
@@ -67,14 +64,12 @@ namespace MediRed.Controllers
         {
             if (id == null)
             {
-                ViewData["MsgError400"] = WebConfigurationManager.AppSettings["MsgError400"];
-                return View(WebConfigurationManager.AppSettings["Error400"]);
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Laboratory laboratory = db.Laboratories.Find(id);
             if (laboratory == null)
             {
-                ViewData["MsgError404"] = WebConfigurationManager.AppSettings["MsgError404"];
-                return View(WebConfigurationManager.AppSettings["Error404"]);
+                return HttpNotFound();
             }
             return View(laboratory);
         }
@@ -84,7 +79,7 @@ namespace MediRed.Controllers
         // más información vea http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "LabId,NameLab,DirLab,MedicalSpeciality,PhoneLab")] Laboratory laboratory)
+        public ActionResult Edit([Bind(Include = "LaboratoryId,Name,Description")] Laboratory laboratory)
         {
             if (ModelState.IsValid)
             {
@@ -100,14 +95,12 @@ namespace MediRed.Controllers
         {
             if (id == null)
             {
-                ViewData["MsgError404"] = WebConfigurationManager.AppSettings["MsgError404"];
-                return View(WebConfigurationManager.AppSettings["Error404"]);
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Laboratory laboratory = db.Laboratories.Find(id);
             if (laboratory == null)
             {
-                ViewData["MsgError404"] = WebConfigurationManager.AppSettings["MsgError404"];
-                return View(WebConfigurationManager.AppSettings["Error404"]);
+                return HttpNotFound();
             }
             return View(laboratory);
         }

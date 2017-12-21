@@ -1,28 +1,21 @@
 ﻿@model MediRed.Models.AtentionCenter
 
 @{
-    ViewBag.Title = "Detalles Centro de Atención";
+    ViewBag.Title = "Details";
 }
 
-<h2>Detalles Centro de Atención</h2>
+<h2>Details</h2>
 
 <div>
+    <h4>AtentionCenter</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.NameCenter)
+            @Html.DisplayNameFor(model => model.Address)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.NameCenter)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.DirCenter)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.DirCenter)
+            @Html.DisplayFor(model => model.Address)
         </dd>
 
         <dt>
@@ -36,6 +29,6 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Editar", "Edit", new { id = Model.CenterId }) |
-    @Html.ActionLink("Volver", "Index")
+    @Html.ActionLink("Edit", "Edit", new { id = Model.AtentionCenterId }) |
+    @Html.ActionLink("Back to List", "Index")
 </p>

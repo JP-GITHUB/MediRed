@@ -1,46 +1,30 @@
 ﻿@model MediRed.Models.Laboratory
 
 @{
-    ViewBag.Title = "Eliminar Laboratorio";
+    ViewBag.Title = "Delete";
 }
 
-<h2>Eliminar Laboratorio</h2>
+<h2>Delete</h2>
 
-<h3>Estás seguro que quieres eliminar esto?</h3>
+<h3>Are you sure you want to delete this?</h3>
 <div>
     <h4>Laboratory</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.NameLab)
+            @Html.DisplayNameFor(model => model.Name)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.NameLab)
+            @Html.DisplayFor(model => model.Name)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.DirLab)
+            @Html.DisplayNameFor(model => model.Description)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.DirLab)
-        </dd>
-
-        @*<dt>
-            @Html.DisplayNameFor(model => model.MedicalSpeciality)
-        </dt>*@
-
-        @*<dd>
-            @Html.DisplayFor(model => model.MedicalSpeciality)
-        </dd>*@
-
-        <dt>
-            @Html.DisplayNameFor(model => model.PhoneLab)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.PhoneLab)
+            @Html.DisplayFor(model => model.Description)
         </dd>
 
     </dl>
@@ -49,8 +33,8 @@
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
-            <input type="submit" value="Eliminar" class="btn btn-default" /> |
-            @Html.ActionLink("Volver", "Index")
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
         </div>
     }
 </div>

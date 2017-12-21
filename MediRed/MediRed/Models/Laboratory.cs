@@ -9,21 +9,17 @@ namespace MediRed.Models
     public class Laboratory
     {
         [Key]
-        public int LabId { get; set; }
+        public int LaboratoryId { get; set; }
 
         [Required]
         [Display(Name = "Nombre Laboratorio")]
-        public string NameLab { get; set; }
+        [StringLength(100, ErrorMessage = "Campo no puede superar los 100 caracteres.")]
+        public string Name { get; set; }
 
-        [Required]
-        [Display(Name = "Dirección")]
-        public string DirLab { get; set; }
+        [Display(Name = "Descripción")]
+        [StringLength(200, ErrorMessage = "Campo no puede superar los 200 caracteres.")]
+        public string Description { get; set; }
 
-        //[Display(Name = "Especialidad Médica")]
-        //public MedicalSpeciality MedicalSpeciality { get; set; }
-
-        [Required]
-        [Display(Name = "Teléfono")]
-        public int PhoneLab { get; set; }
+        public virtual ICollection<Technologist> Technologist { get; set; }
     }
 }

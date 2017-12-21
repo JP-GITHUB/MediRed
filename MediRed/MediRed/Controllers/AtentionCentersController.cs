@@ -8,7 +8,6 @@ using System.Web;
 using System.Web.Mvc;
 using MediRed.Context;
 using MediRed.Models;
-using System.Web.Configuration;
 
 namespace MediRed.Controllers
 {
@@ -27,14 +26,12 @@ namespace MediRed.Controllers
         {
             if (id == null)
             {
-                ViewData["MsgError400"] = WebConfigurationManager.AppSettings["MsgError400"];
-                return View(WebConfigurationManager.AppSettings["Error400"]);
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             AtentionCenter atentionCenter = db.AtentionCenters.Find(id);
             if (atentionCenter == null)
             {
-                ViewData["MsgError404"] = WebConfigurationManager.AppSettings["MsgError404"];
-                return View(WebConfigurationManager.AppSettings["Error404"]);
+                return HttpNotFound();
             }
             return View(atentionCenter);
         }
@@ -50,7 +47,7 @@ namespace MediRed.Controllers
         // más información vea http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "CenterId,NameCenter,DirCenter,PhoneCener")] AtentionCenter atentionCenter)
+        public ActionResult Create([Bind(Include = "AtentionCenterId,Address,PhoneCener")] AtentionCenter atentionCenter)
         {
             if (ModelState.IsValid)
             {
@@ -67,14 +64,12 @@ namespace MediRed.Controllers
         {
             if (id == null)
             {
-                ViewData["MsgError400"] = WebConfigurationManager.AppSettings["MsgError400"];
-                return View(WebConfigurationManager.AppSettings["Error400"]);
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             AtentionCenter atentionCenter = db.AtentionCenters.Find(id);
             if (atentionCenter == null)
             {
-                ViewData["MsgError404"] = WebConfigurationManager.AppSettings["MsgError404"];
-                return View(WebConfigurationManager.AppSettings["Error404"]);
+                return HttpNotFound();
             }
             return View(atentionCenter);
         }
@@ -84,7 +79,7 @@ namespace MediRed.Controllers
         // más información vea http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "CenterId,NameCenter,DirCenter,PhoneCener")] AtentionCenter atentionCenter)
+        public ActionResult Edit([Bind(Include = "AtentionCenterId,Address,PhoneCener")] AtentionCenter atentionCenter)
         {
             if (ModelState.IsValid)
             {
@@ -100,14 +95,12 @@ namespace MediRed.Controllers
         {
             if (id == null)
             {
-                ViewData["MsgError400"] = WebConfigurationManager.AppSettings["MsgError400"];
-                return View(WebConfigurationManager.AppSettings["Error400"]);
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             AtentionCenter atentionCenter = db.AtentionCenters.Find(id);
             if (atentionCenter == null)
             {
-                ViewData["MsgError404"] = WebConfigurationManager.AppSettings["MsgError404"];
-                return View(WebConfigurationManager.AppSettings["Error404"]);
+                return HttpNotFound();
             }
             return View(atentionCenter);
         }

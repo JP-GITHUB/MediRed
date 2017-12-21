@@ -18,8 +18,8 @@ namespace MediRed.Controllers
         // GET: Patients
         public ActionResult Index()
         {
-            var patients = db.Patients.Include(p => p.Country);
-            return View(patients.ToList());
+            var people = db.Patients.Include(p => p.Country).Include(p => p.Wellfare);
+            return View(people.ToList());
         }
 
         // GET: Patients/Details/5
@@ -40,7 +40,8 @@ namespace MediRed.Controllers
         // GET: Patients/Create
         public ActionResult Create()
         {
-            ViewBag.IdCountry = new SelectList(db.Countries, "CountryId", "Name");
+            ViewBag.CountryId = new SelectList(db.Countries, "CountryId", "Name");
+            ViewBag.WellfareId = new SelectList(db.Wellfares, "WellfareId", "name");
             return View();
         }
 
@@ -49,7 +50,7 @@ namespace MediRed.Controllers
         // más información vea http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "PersonId,BloodType,Welfare,FirstName,LastName,ContactEmail,ContactNumber,IdCountry")] Patient patient)
+        public ActionResult Create([Bind(Include = "PersonId,FirstName,LastName,ContactEmail,ContactNumber,CountryId,BloodType,WellfareId")] Patient patient)
         {
             if (ModelState.IsValid)
             {
@@ -58,7 +59,8 @@ namespace MediRed.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.IdCountry = new SelectList(db.Countries, "CountryId", "Name", patient.IdCountry);
+            ViewBag.CountryId = new SelectList(db.Countries, "CountryId", "Name", patient.CountryId);
+            ViewBag.WellfareId = new SelectList(db.Wellfares, "WellfareId", "name", patient.WellfareId);
             return View(patient);
         }
 
@@ -74,7 +76,8 @@ namespace MediRed.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.IdCountry = new SelectList(db.Countries, "CountryId", "Name", patient.IdCountry);
+            ViewBag.CountryId = new SelectList(db.Countries, "CountryId", "Name", patient.CountryId);
+            ViewBag.WellfareId = new SelectList(db.Wellfares, "WellfareId", "name", patient.WellfareId);
             return View(patient);
         }
 
@@ -83,7 +86,7 @@ namespace MediRed.Controllers
         // más información vea http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "PersonId,BloodType,Welfare,FirstName,LastName,ContactEmail,ContactNumber,IdCountry")] Patient patient)
+        public ActionResult Edit([Bind(Include = "PersonId,FirstName,LastName,ContactEmail,ContactNumber,CountryId,BloodType,WellfareId")] Patient patient)
         {
             if (ModelState.IsValid)
             {
@@ -91,7 +94,8 @@ namespace MediRed.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.IdCountry = new SelectList(db.Countries, "CountryId", "Name", patient.IdCountry);
+            ViewBag.CountryId = new SelectList(db.Countries, "CountryId", "Name", patient.CountryId);
+            ViewBag.WellfareId = new SelectList(db.Wellfares, "WellfareId", "name", patient.WellfareId);
             return View(patient);
         }
 

@@ -3,10 +3,10 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MediRed.Models
 {
+    [Table("Person")]
     public abstract class Person
     {
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int PersonId { get; set; }
 
         [Required]
@@ -20,14 +20,15 @@ namespace MediRed.Models
         public string LastName { get; set; }
 
         [StringLength(50, ErrorMessage = "Campo no puede superar los 50 caracteres.")]
+        [Display(Name = "Email")]
         public string ContactEmail { get; set; }
 
         [Display(Name="Teléfono")]
         public int ContactNumber{ get; set; }
         
-        public int? IdCountry { get; set; }
+        public int? CountryId { get; set; }
 
-        [ForeignKey("IdCountry")]
+        [ForeignKey("CountryId")]
         public virtual Country Country { get; set; }
 
     }
