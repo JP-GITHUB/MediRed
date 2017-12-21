@@ -17,13 +17,14 @@ namespace TestConsole
                 MediRed.Utilities.Notification nf = new MediRed.Utilities.Notification();
                 MailMessage mnsj = new MailMessage();
 
-                mnsj.Subject = "Hola Mundo";
+                mnsj.Subject = "Mensaje Urgente [Medired]";
 
-                mnsj.To.Add(new MailAddress("ecmcaceres@gmail.com"));
+                mnsj.To.Add(new MailAddress("xxxx@gmail.com"));
 
                 mnsj.From = new MailAddress("MediredMsg@gmail.com", "Equipo Medired");
 
-                mnsj.Body = "  Mensaje de Prueba \n\n Enviado desde C#\n\n TRABAJA";
+                mnsj.Body = "Estimado Paciente \n\n Necesitamos que se comunique con su medico \n a la brevedad\n\n "+
+                            "Su diagnostico requiere de atencion especial. \n\n\n\n Medired - Nos preocupamos por ti";
 
                 /* Enviar */
                 nf.MandarCorreo(mnsj);
