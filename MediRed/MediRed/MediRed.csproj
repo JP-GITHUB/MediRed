@@ -179,7 +179,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Context\MediRedContext.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\AtentionCentersController.cs" />
+    <Compile Include="Controllers\AttentionsController.cs" />
     <Compile Include="Controllers\CountriesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LaboratoriesController.cs" />
@@ -199,6 +199,7 @@
     <Compile Include="Models\Attention.cs" />
     <Compile Include="Models\Country.cs" />
     <Compile Include="Models\Diagnostic.cs" />
+    <Compile Include="Models\Exam.cs" />
     <Compile Include="Models\Medic.cs" />
     <Compile Include="Models\History.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -338,6 +339,11 @@
     <Content Include="Views\Providers\Details.cshtml" />
     <Content Include="Views\Providers\Edit.cshtml" />
     <Content Include="Views\Providers\Index.cshtml" />
+    <Content Include="Views\Attentions\Create.cshtml" />
+    <Content Include="Views\Attentions\Delete.cshtml" />
+    <Content Include="Views\Attentions\Details.cshtml" />
+    <Content Include="Views\Attentions\Edit.cshtml" />
+    <Content Include="Views\Attentions\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

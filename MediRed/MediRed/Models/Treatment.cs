@@ -13,6 +13,6 @@ namespace MediRed.Models
 
         public string Detail { get; set; }
 
-        // Falta relacion de Medicine
+        public virtual ICollection<Medicine> Medicines { get; set; }
     }
 }

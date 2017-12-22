@@ -11,107 +11,116 @@ using MediRed.Models;
 
 namespace MediRed.Controllers
 {
-    public class AtentionCentersController : Controller
+    public class AttentionsController : Controller
     {
         private MediRedContext db = new MediRedContext();
 
-        // GET: AtentionCenters
+        // GET: Attentions
         public ActionResult Index()
         {
-            return View(db.AtentionCenters.ToList());
+            var attentions = db.Attentions.Include(a => a.Diagnostic).Include(a => a.Person);
+            return View(attentions.ToList());
         }
 
-        // GET: AtentionCenters/Details/5
+        // GET: Attentions/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            AtentionCenter atentionCenter = db.AtentionCenters.Find(id);
-            if (atentionCenter == null)
+            Attention attention = db.Attentions.Find(id);
+            if (attention == null)
             {
                 return HttpNotFound();
             }
-            return View(atentionCenter);
+            return View(attention);
         }
 
-        // GET: AtentionCenters/Create
+        // GET: Attentions/Create
         public ActionResult Create()
         {
+            ViewBag.DiagnosticId = new SelectList(db.Diagnostics, "DiagnosticId", "Description");
+            ViewBag.PersonId = new SelectList(db.People, "PersonId", "FirstName");
             return View();
         }
 
-        // POST: AtentionCenters/Create
+        // POST: Attentions/Create
         // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
         // más información vea http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "AtentionCenterId,Address,PhoneCener")] AtentionCenter atentionCenter)
+        public ActionResult Create([Bind(Include = "AttentionId,Detail,PersonId,DiagnosticId")] Attention attention)
         {
             if (ModelState.IsValid)
             {
-                db.AtentionCenters.Add(atentionCenter);
+                db.Attentions.Add(attention);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(atentionCenter);
+            ViewBag.DiagnosticId = new SelectList(db.Diagnostics, "DiagnosticId", "Description", attention.DiagnosticId);
+            ViewBag.PersonId = new SelectList(db.People, "PersonId", "FirstName", attention.PersonId);
+            return View(attention);
         }
 
-        // GET: AtentionCenters/Edit/5
+        // GET: Attentions/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            AtentionCenter atentionCenter = db.AtentionCenters.Find(id);
-            if (atentionCenter == null)
+            Attention attention = db.Attentions.Find(id);
+            if (attention == null)
             {
                 return HttpNotFound();
             }
-            return View(atentionCenter);
+            ViewBag.DiagnosticId = new SelectList(db.Diagnostics, "DiagnosticId", "Description", attention.DiagnosticId);
+            ViewBag.PersonId = new SelectList(db.People, "PersonId", "FirstName", attention.PersonId);
+            return View(attention);
         }
 
-        // POST: AtentionCenters/Edit/5
+        // POST: Attentions/Edit/5
         // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
         // más información vea http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "AtentionCenterId,Address,PhoneCener")] AtentionCenter atentionCenter)
+        public ActionResult Edit([Bind(Include = "AttentionId,Detail,PersonId,DiagnosticId")] Attention attention)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(atentionCenter).State = EntityState.Modified;
+                db.Entry(attention).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(atentionCenter);
+            ViewBag.DiagnosticId = new SelectList(db.Diagnostics, "DiagnosticId", "Description", attention.DiagnosticId);
+            ViewBag.PersonId = new SelectList(db.People, "PersonId", "FirstName", attention.PersonId);
+            return View(attention);
         }
 
-        // GET: AtentionCenters/Delete/5
+        // GET: Attentions/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            AtentionCenter atentionCenter = db.AtentionCenters.Find(id);
-            if (atentionCenter == null)
+            Attention attention = db.Attentions.Find(id);
+            if (attention == null)
             {
                 return HttpNotFound();
             }
-            return View(atentionCenter);
+            return View(attention);
         }
 
-        // POST: AtentionCenters/Delete/5
+        // POST: Attentions/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            AtentionCenter atentionCenter = db.AtentionCenters.Find(id);
-            db.AtentionCenters.Remove(atentionCenter);
+            Attention attention = db.Attentions.Find(id);
+            db.Attentions.Remove(attention);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

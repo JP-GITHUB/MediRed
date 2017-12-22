@@ -50,5 +50,11 @@ namespace MediRed.Context
         public System.Data.Entity.DbSet<MediRed.Models.Person> People { get; set; }
 
         public System.Data.Entity.DbSet<MediRed.Models.Provider> Providers { get; set; }
+
+        public System.Data.Entity.DbSet<MediRed.Models.Attention> Attentions { get; set; }
+
+        public System.Data.Entity.DbSet<MediRed.Models.Diagnostic> Diagnostics { get; set; }
+
+        public System.Data.Entity.DbSet<MediRed.Models.History> Histories { get; set; }
     }
 }

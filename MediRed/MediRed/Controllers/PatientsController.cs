@@ -54,7 +54,7 @@ namespace MediRed.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Patients.Add(patient);
+                db.People.Add(patient);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -120,7 +120,7 @@ namespace MediRed.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             Patient patient = db.Patients.Find(id);
-            db.Patients.Remove(patient);
+            db.People.Remove(patient);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
