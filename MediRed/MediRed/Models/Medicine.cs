@@ -21,5 +21,7 @@ namespace MediRed.Models
 
         [Display(Name = "Descripción")]
         public string Description { get; set; }
+
+        public virtual ICollection<Treatment> Treatments { get; set; }
     }
 }

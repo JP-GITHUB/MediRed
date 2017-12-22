@@ -1,4 +1,4 @@
-﻿@model IEnumerable<MediRed.Models.Patient>
+﻿@model IEnumerable<MediRed.Models.Person>
 
 @{
     ViewBag.Title = "Index";
@@ -13,12 +13,6 @@
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.Country.Name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.BloodType)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Welfare)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.FirstName)
@@ -39,12 +33,6 @@
     <tr>
         <td>
             @Html.DisplayFor(modelItem => item.Country.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.BloodType)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Welfare)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.FirstName)

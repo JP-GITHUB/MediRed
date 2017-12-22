@@ -1,27 +1,21 @@
 ﻿@model IEnumerable<MediRed.Models.Laboratory>
 
 @{
-    ViewBag.Title = "Laboratorios";
+    ViewBag.Title = "Index";
 }
 
-<h2>Laboratorios</h2>
+<h2>Index</h2>
 
 <p>
-    @Html.ActionLink("Agregar Laboratorio", "Create")
+    @Html.ActionLink("Create New", "Create")
 </p>
 <table class="table">
     <tr>
         <th>
-            Nombre del Laboratorio
+            @Html.DisplayNameFor(model => model.Name)
         </th>
         <th>
-            Dirección
-        </th>
-        @*<th>
-            Especialidad Médica
-        </th>*@
-        <th>
-            Teléfono
+            @Html.DisplayNameFor(model => model.Description)
         </th>
         <th></th>
     </tr>
@@ -29,21 +23,15 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.NameLab)
+            @Html.DisplayFor(modelItem => item.Name)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.DirLab)
-        </td>
-        @*<td>
-            @Html.DisplayFor(modelItem => item.MedicalSpeciality)
-        </td>*@
-        <td>
-            @Html.DisplayFor(modelItem => item.PhoneLab)
+            @Html.DisplayFor(modelItem => item.Description)
         </td>
         <td>
-            @Html.ActionLink("Editar", "Edit", new { id=item.LabId }) |
-            @Html.ActionLink("Detalles", "Details", new { id=item.LabId }) |
-            @Html.ActionLink("Borrar", "Delete", new { id=item.LabId })
+            @Html.ActionLink("Edit", "Edit", new { id=item.LaboratoryId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.LaboratoryId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.LaboratoryId })
         </td>
     </tr>
 }

@@ -1,49 +1,34 @@
 ﻿@model MediRed.Models.Laboratory
 
 @{
-    ViewBag.Title = "Detalles Laboratorio";
+    ViewBag.Title = "Details";
 }
 
-<h2>Detalles Laboratorio</h2>
+<h2>Details</h2>
 
 <div>
+    <h4>Laboratory</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.NameLab)
+            @Html.DisplayNameFor(model => model.Name)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.NameLab)
+            @Html.DisplayFor(model => model.Name)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.DirLab)
+            @Html.DisplayNameFor(model => model.Description)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.DirLab)
-        </dd>
-
-        @*<dt>
-            @Html.DisplayNameFor(model => model.MedicalSpeciality)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.MedicalSpeciality)
-        </dd>*@
-
-        <dt>
-            @Html.DisplayNameFor(model => model.PhoneLab)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.PhoneLab)
+            @Html.DisplayFor(model => model.Description)
         </dd>
 
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Editar", "Edit", new { id = Model.LabId }) |
-    @Html.ActionLink("Volver", "Index")
+    @Html.ActionLink("Edit", "Edit", new { id = Model.LaboratoryId }) |
+    @Html.ActionLink("Back to List", "Index")
 </p>

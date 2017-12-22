@@ -18,8 +18,8 @@ namespace MediRed.Controllers
         // GET: Medics
         public ActionResult Index()
         {
-            var medics = db.Medics.Include(m => m.Country).Include(m => m.Speciality);
-            return View(medics.ToList());
+            var people = db.Medics.Include(m => m.Country).Include(m => m.AtentionCenter).Include(m => m.Speciality);
+            return View(people.ToList());
         }
 
         // GET: Medics/Details/5
@@ -40,8 +40,9 @@ namespace MediRed.Controllers
         // GET: Medics/Create
         public ActionResult Create()
         {
-            ViewBag.IdCountry = new SelectList(db.Countries, "CountryId", "Name");
-            ViewBag.SpecialityId = new SelectList(db.Specialities, "SpecialityId", "SpecialityDescription");
+            ViewBag.CountryId = new SelectList(db.Countries, "CountryId", "Name");
+            ViewBag.AtentionCenterId = new SelectList(db.AtentionCenters, "AtentionCenterId", "Address");
+            ViewBag.SpecialityId = new SelectList(db.Specialities, "SpecialityId", "Description");
             return View();
         }
 
@@ -50,7 +51,7 @@ namespace MediRed.Controllers
         // más información vea http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "PersonId,SpecialityId,FirstName,LastName,ContactEmail,ContactNumber,IdCountry")] Medic medic)
+        public ActionResult Create([Bind(Include = "PersonId,FirstName,LastName,ContactEmail,ContactNumber,CountryId,SpecialityId,AtentionCenterId")] Medic medic)
         {
             if (ModelState.IsValid)
             {
@@ -59,8 +60,9 @@ namespace MediRed.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.IdCountry = new SelectList(db.Countries, "CountryId", "Name", medic.IdCountry);
-            ViewBag.SpecialityId = new SelectList(db.Specialities, "SpecialityId", "SpecialityDescription", medic.SpecialityId);
+            ViewBag.CountryId = new SelectList(db.Countries, "CountryId", "Name", medic.CountryId);
+            ViewBag.AtentionCenterId = new SelectList(db.AtentionCenters, "AtentionCenterId", "Address", medic.AtentionCenterId);
+            ViewBag.SpecialityId = new SelectList(db.Specialities, "SpecialityId", "Description", medic.SpecialityId);
             return View(medic);
         }
 
@@ -76,8 +78,9 @@ namespace MediRed.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.IdCountry = new SelectList(db.Countries, "CountryId", "Name", medic.IdCountry);
-            ViewBag.SpecialityId = new SelectList(db.Specialities, "SpecialityId", "SpecialityDescription", medic.SpecialityId);
+            ViewBag.CountryId = new SelectList(db.Countries, "CountryId", "Name", medic.CountryId);
+            ViewBag.AtentionCenterId = new SelectList(db.AtentionCenters, "AtentionCenterId", "Address", medic.AtentionCenterId);
+            ViewBag.SpecialityId = new SelectList(db.Specialities, "SpecialityId", "Description", medic.SpecialityId);
             return View(medic);
         }
 
@@ -86,7 +89,7 @@ namespace MediRed.Controllers
         // más información vea http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "PersonId,SpecialityId,FirstName,LastName,ContactEmail,ContactNumber,IdCountry")] Medic medic)
+        public ActionResult Edit([Bind(Include = "PersonId,FirstName,LastName,ContactEmail,ContactNumber,CountryId,SpecialityId,AtentionCenterId")] Medic medic)
         {
             if (ModelState.IsValid)
             {
@@ -94,8 +97,9 @@ namespace MediRed.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.IdCountry = new SelectList(db.Countries, "CountryId", "Name", medic.IdCountry);
-            ViewBag.SpecialityId = new SelectList(db.Specialities, "SpecialityId", "SpecialityDescription", medic.SpecialityId);
+            ViewBag.CountryId = new SelectList(db.Countries, "CountryId", "Name", medic.CountryId);
+            ViewBag.AtentionCenterId = new SelectList(db.AtentionCenters, "AtentionCenterId", "Address", medic.AtentionCenterId);
+            ViewBag.SpecialityId = new SelectList(db.Specialities, "SpecialityId", "Description", medic.SpecialityId);
             return View(medic);
         }
 
