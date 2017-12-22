@@ -11,116 +11,112 @@ using MediRed.Models;
 
 namespace MediRed.Controllers
 {
-    public class PatientsController : Controller
+    public class HistoriesController : Controller
     {
         private MediRedContext db = new MediRedContext();
 
-        // GET: Patients
+        // GET: Histories
         public ActionResult Index()
         {
-            var people = db.Patients.Include(p => p.Country).Include(p => p.Wellfare);
-            return View(people.ToList());
+            var histories = db.Histories.Include(h => h.Patient);
+            return View(histories.ToList());
         }
 
-        // GET: Patients/Details/5
+        // GET: Histories/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Patient patient = db.Patients.Find(id);
-            if (patient == null)
+            History history = db.Histories.Find(id);
+            if (history == null)
             {
                 return HttpNotFound();
             }
-            return View(patient);
+            return View(history);
         }
 
-        // GET: Patients/Create
+        // GET: Histories/Create
         public ActionResult Create()
         {
-            ViewBag.CountryId = new SelectList(db.Countries, "CountryId", "Name");
-            ViewBag.WellfareId = new SelectList(db.Wellfares, "WellfareId", "name");
+            ViewBag.Personid = new SelectList(db.People, "PersonId", "FirstName");
             return View();
         }
 
-        // POST: Patients/Create
+        // POST: Histories/Create
         // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
         // más información vea http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "PersonId,FirstName,LastName,ContactEmail,ContactNumber,CountryId,BloodType,WellfareId")] Patient patient)
+        public ActionResult Create([Bind(Include = "HistoryId,Personid,PatientName,ClientIdentification,ClientBloodType,Hypertension,Diabetes")] History history)
         {
             if (ModelState.IsValid)
             {
-                db.People.Add(patient);
+                db.Histories.Add(history);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.CountryId = new SelectList(db.Countries, "CountryId", "Name", patient.CountryId);
-            ViewBag.WellfareId = new SelectList(db.Wellfares, "WellfareId", "name", patient.WellfareId);
-            return View(patient);
+            ViewBag.Personid = new SelectList(db.People, "PersonId", "FirstName", history.Personid);
+            return View(history);
         }
 
-        // GET: Patients/Edit/5
+        // GET: Histories/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Patient patient = db.Patients.Find(id);
-            if (patient == null)
+            History history = db.Histories.Find(id);
+            if (history == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.CountryId = new SelectList(db.Countries, "CountryId", "Name", patient.CountryId);
-            ViewBag.WellfareId = new SelectList(db.Wellfares, "WellfareId", "name", patient.WellfareId);
-            return View(patient);
+            ViewBag.Personid = new SelectList(db.People, "PersonId", "FirstName", history.Personid);
+            return View(history);
         }
 
-        // POST: Patients/Edit/5
+        // POST: Histories/Edit/5
         // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
         // más información vea http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "PersonId,FirstName,LastName,ContactEmail,ContactNumber,CountryId,BloodType,WellfareId")] Patient patient)
+        public ActionResult Edit([Bind(Include = "HistoryId,Personid,PatientName,ClientIdentification,ClientBloodType,Hypertension,Diabetes")] History history)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(patient).State = EntityState.Modified;
+                db.Entry(history).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.CountryId = new SelectList(db.Countries, "CountryId", "Name", patient.CountryId);
-            ViewBag.WellfareId = new SelectList(db.Wellfares, "WellfareId", "name", patient.WellfareId);
-            return View(patient);
+            ViewBag.Personid = new SelectList(db.People, "PersonId", "FirstName", history.Personid);
+            return View(history);
         }
 
-        // GET: Patients/Delete/5
+        // GET: Histories/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Patient patient = db.Patients.Find(id);
-            if (patient == null)
+            History history = db.Histories.Find(id);
+            if (history == null)
             {
                 return HttpNotFound();
             }
-            return View(patient);
+            return View(history);
         }
 
-        // POST: Patients/Delete/5
+        // POST: Histories/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Patient patient = db.Patients.Find(id);
-            db.People.Remove(patient);
+            History history = db.Histories.Find(id);
+            db.Histories.Remove(history);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

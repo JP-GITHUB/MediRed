@@ -21,7 +21,10 @@ namespace MediRed.Models
 
         public virtual Diagnostic Diagnostic { get; set; }
 
-        // Falta la relaccion de examenes Muchos a Muchos
+        public int HistoryId { get; set; }
+
+        public virtual History History { get; set; }
+
         public virtual ICollection<Exam> Exams { get; set; }
 
         public bool NewAttention()

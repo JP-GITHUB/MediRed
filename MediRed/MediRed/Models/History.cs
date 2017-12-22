@@ -21,6 +21,12 @@ namespace MediRed.Models
 
         public string ClientBloodType { get; set; }
 
+        public bool Hypertension { get; set; }
+
+        public bool Diabetes { get; set; }
+
+        public virtual ICollection<Attention> Attencions { get; set; }
+
         public bool GetMorbility()
         {
             return true;
