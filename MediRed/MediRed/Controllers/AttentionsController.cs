@@ -18,7 +18,7 @@ namespace MediRed.Controllers
         // GET: Attentions
         public ActionResult Index()
         {
-            var attentions = db.Attentions.Include(a => a.Diagnostic).Include(a => a.Person);
+            var attentions = db.Attentions.Include(a => a.Diagnostic).Include(a => a.Medic);
             return View(attentions.ToList());
         }
 
