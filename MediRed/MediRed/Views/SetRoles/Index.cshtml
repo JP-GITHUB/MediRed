@@ -16,7 +16,7 @@
 </p>
 <br />
 <p>
-    @Html.ActionLink("Agregar un nuevo rol al sistema", "NewRole")
+    @Html.ActionLink("Agregar un nuevo rol al sistema", "CreateRole")
 </p>
 <table class="table">
     <tr>
@@ -28,7 +28,7 @@
         </th>
         <th></th>
     </tr>
-
+    @* Pendiente vaidación de modelo vacio o null *@
     @foreach (var item in Model)
     {
         <tr>
