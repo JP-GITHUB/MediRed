@@ -207,35 +207,19 @@ namespace MediRed.Controllers
             }
             return View("Index", lstUserVm);
         }
-        
-       
+
         public ActionResult EliminateRole()
         {
-            //Instanciar un manager de roles
-            var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(db));
-            var lstRolVm = roleManager.Roles.ToList();
+            var roles = db.Roles.ToList();
+            return View(roles);
+        }
 
-            foreach(var sRole in lstRolVm)
-            {
-                roleManager.FindById(sRole);
-                
-
-            }
-
-            var userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(db));
-            var lstUserVm = new List<UserViewModel>();
-
-            foreach (var user in userManager.Users)
-            {
-                var userVm = new UserViewModel()
-                {
-                    UserId = user.Id,
-                    UserName = user.UserName,
-                    Email = user.Email
-                };
-                lstUserVm.Add(userVm);
-            }
-            return View("Index", lstUserVm);
+        public ActionResult DeleteRolSystem(string RoleName)
+        {
+            var thisRole = db.Roles.Where(r => r.Name.Equals(RoleName, StringComparison.CurrentCultureIgnoreCase)).FirstOrDefault();
+            db.Roles.Remove(thisRole);
+            db.SaveChanges();
+            return RedirectToAction("Index");
         }
     }      
 }

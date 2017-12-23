@@ -1,5 +1,4 @@
-﻿
-@model  MediRed.Models.RoleViewModel
+﻿@model IEnumerable<Microsoft.AspNet.Identity.EntityFramework.IdentityRole>
 
 @{
     ViewBag.Title = "EliminateRole";
@@ -26,11 +25,11 @@
         {
             <tr>
                 <td>
-                    @Html.DisplayFor(modelItem => role.Name)
+                    @Html.DisplayFor(modelItem => @role.Name)
                 </td>
                 <td>
 
-                    @Html.ActionLink("Eliminar", "EliminateRole", new { roleId = role.Id })
+                    @Html.ActionLink("Eliminar", "DeleteRolSystem", new { roleName = @role.Name })
                 </td>
             </tr>
         }
