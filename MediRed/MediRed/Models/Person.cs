@@ -7,7 +7,7 @@ namespace MediRed.Models
     public abstract class Person
     {
         [Key]
-        public int PersonId { get; set; }
+        public int Id { get; set; }
 
         [Required]
         [StringLength(50, ErrorMessage = "Campo no puede superar los 50 caracteres.")]

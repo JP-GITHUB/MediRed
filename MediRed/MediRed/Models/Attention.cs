@@ -13,7 +13,8 @@ namespace MediRed.Models
 
         public string Detail { get; set; }
 
-        public int PersonId { get; set; }
+        // From Person
+        public int Id { get; set; }
 
         public virtual Medic Medic { get; set; }
 

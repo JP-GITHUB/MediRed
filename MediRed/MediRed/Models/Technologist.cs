@@ -10,9 +10,6 @@ namespace MediRed.Models
     [Table("Technologist")]
     public class Technologist: Person
     {
-        //[Key]
-        //public int TechnologistId { get; set; }
-
         [Required]
         public int SpecialityId { get; set; }
 

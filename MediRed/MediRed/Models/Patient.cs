@@ -10,9 +10,6 @@ namespace MediRed.Models
     [Table("Patient")]
     public class Patient: Person
     {
-        //[Key]
-        //public int PatientId { get; set; }
-
         [Required]
         [StringLength(10, ErrorMessage = "Campo no puede superar los 10 caracteres.")]
         [Display(Name = "Tipo de Sangre")]

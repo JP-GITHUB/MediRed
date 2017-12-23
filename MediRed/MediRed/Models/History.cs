@@ -11,7 +11,7 @@ namespace MediRed.Models
         [Key]
         public int HistoryId { get; set; }
 
-        public int Personid { get; set; }
+        public int Id { get; set; }
 
         public virtual Patient Patient { get; set; }
 
