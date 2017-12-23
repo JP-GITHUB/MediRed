@@ -1,0 +1,51 @@
+﻿@model IEnumerable<MediRed.Models.Attention>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Diagnostic.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.History.PatientName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Medic.FirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Detail)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Diagnostic.Description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.History.PatientName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Medic.FirstName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Detail)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.AttentionId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.AttentionId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.AttentionId })
+        </td>
+    </tr>
+}
+
+</table>
