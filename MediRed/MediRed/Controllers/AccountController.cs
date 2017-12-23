@@ -9,14 +9,19 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using MediRed.Models;
+using MediRed.Context;
+using System.Collections;
+using Microsoft.AspNet.Identity.EntityFramework;
+using System.Configuration;
 
 namespace MediRed.Controllers
-{
+{   
     [Authorize]
     public class AccountController : Controller
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
+        MediRedContext db = new MediRedContext();
 
         public AccountController()
         {
@@ -139,6 +144,10 @@ namespace MediRed.Controllers
         [AllowAnonymous]
         public ActionResult Register()
         {
+            var countryl = db.Countries.ToList();
+            ViewBag.Country = countryl;
+            var wellfarel = db.Wellfares.ToList();
+            ViewBag.Wellfare = wellfarel;
             return View();
         }
 
@@ -149,19 +158,51 @@ namespace MediRed.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Register(RegisterViewModel model)
         {
+            var countryl = db.Countries.ToList();
+            ViewBag.Country = countryl;
+            var wellfarel = db.Wellfares.ToList();
+            ViewBag.Wellfare = wellfarel;
             if (ModelState.IsValid)
             {
+                //Registro al usuario
                 var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
+                    //logueo al usuario
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
-                    
-                    // Para obtener más información sobre cómo habilitar la confirmación de cuenta y el restablecimiento de contraseña, visite http://go.microsoft.com/fwlink/?LinkID=320771
-                    // Enviar correo electrónico con este vínculo
-                    // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
-                    // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
-                    // await UserManager.SendEmailAsync(user.Id, "Confirmar cuenta", "Para confirmar la cuenta, haga clic <a href=\"" + callbackUrl + "\">aquí</a>");
+                    //creo al paciente con los datos del usuario registrado
+                    Patient patient = new Patient();
+                    patient.FirstName = model.Name;
+                    patient.LastName = model.LastName;
+                    patient.ContactEmail = model.Email;
+                    patient.CountryId = model.CountryId;
+                    patient.Rut = model.Rut;
+                    patient.WellfareId = model.WellfareId;
+                    //guardo al nuevo paciente
+                    var dbPatient = db.Patients;
+                    dbPatient.Add(patient);
+                    db.SaveChanges();
+
+                    ApplicationDbContext ddb = new ApplicationDbContext();
+                    var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(ddb));
+                    var userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(ddb));
+                    var userRol = userManager.FindByName(patient.ContactEmail);
+                        userManager.AddToRole(userRol.Id, "Paciente");
+
+                    //le asigno el rol de paciente al usuario creado
+                    //var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(db));
+                    //var userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(db));
+                    //var userRol = userManager.FindByEmail(patient.ContactEmail);
+                    //var role = roleManager.FindByName("Paciente");
+                    ////Se verifica si el usuario tenia el rol, y si no lo tiene se le agrega
+
+                    //if (!userManager.IsInRole(userRol.Id, role.Name))
+                    //{
+                    //    userManager.AddToRole(userRol.Id, role.Name);
+                    //}
+
+
 
                     return RedirectToAction("Index", "Home");
                 }

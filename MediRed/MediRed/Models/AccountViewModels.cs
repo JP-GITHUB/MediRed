@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MediRed.Models
 {
@@ -67,9 +68,29 @@ namespace MediRed.Models
        
 
         [Required]
+        [StringLength(50, ErrorMessage = "Campo no puede superar los 50 caracteres.")]
+        [Display(Name = "Nombre")]
+        public string Name { get; set; }
+
+        [Required]
+        [StringLength(50, ErrorMessage = "Campo no puede superar los 50 caracteres.")]
+        [Display(Name = "Apellidos")]
+        public string LastName { get; set; }
+
+        [Required]
         [EmailAddress]
         [Display(Name = "Correo electrónico")]
+        [StringLength(50, ErrorMessage = "Campo no puede superar los 50 caracteres.")]
         public string Email { get; set; }
+
+        [Required]
+        [StringLength(12, ErrorMessage = "Campo no puede superar los 12 caracteres.")]
+        [Display(Name = "Rut")]
+        public string Rut { get; set; }
+
+        [Required]
+        [Display(Name = "Pais")]
+        public int CountryId { get; set; }
 
         [Required]
         [StringLength(100, ErrorMessage = "El número de caracteres de {0} debe ser al menos {2}.", MinimumLength = 6)]
@@ -81,6 +102,10 @@ namespace MediRed.Models
         [Display(Name = "Confirmar contraseña")]
         [Compare("Password", ErrorMessage = "La contraseña y la contraseña de confirmación no coinciden.")]
         public string ConfirmPassword { get; set; }
+
+        [Required]
+        [Display(Name = "Previsíon")]
+        public int WellfareId { get; set; }
     }
 
     public class ResetPasswordViewModel
