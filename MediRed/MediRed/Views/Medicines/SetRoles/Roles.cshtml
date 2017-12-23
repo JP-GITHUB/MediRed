@@ -1,0 +1,33 @@
+﻿@model MediRed.Models.UserViewModel
+
+@{
+    ViewBag.Title = "Roles";
+}
+
+<h2>Roles del usuario  : @Model.UserName</h2>
+<p>
+    @Html.ActionLink(" Volver a la lista", "Index") |
+    @Html.ActionLink("Agregar Rol", "AddRole")
+</p>
+
+
+<table class="table table-bordered table-hover">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Roles.First().RoleName);
+        </th>
+    </tr>
+
+    @foreach(var item in Model.Roles)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem=> item.RoleName)
+            </td>
+            <td>
+                @Html.ActionLink("Eliminar Rol", "DeleteRole", new { id = item.RoleId})
+            </td>
+        </tr>
+    }
+</table>
+

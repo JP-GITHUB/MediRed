@@ -6,7 +6,6 @@ using System.Data.Entity;
 using System.Globalization;
 using System.Linq;
 using MediRed.Context;
-using MediRed.Migrations;
 using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
@@ -17,7 +16,7 @@ using System;
 
 namespace MediRed
 {
-    public class MvcApplication : System.Web.HttpApplication
+    public class MvcApplication: System.Web.HttpApplication
     {
         protected void Application_Start()
         {

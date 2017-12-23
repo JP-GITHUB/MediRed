@@ -65,6 +65,8 @@ namespace MediRed.Models
 
     public class RegisterViewModel
     {
+       
+
         [Required]
         [StringLength(50, ErrorMessage = "Campo no puede superar los 50 caracteres.")]
         [Display(Name = "Nombre")]

@@ -13,6 +13,7 @@ namespace MediRed.Controllers
     {
         ApplicationDbContext db = new ApplicationDbContext();
         // GET: SetRoles
+        [Authorize(Roles = "Admin")]
         public ActionResult Index()
         {
             var userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(db));
@@ -30,10 +31,14 @@ namespace MediRed.Controllers
             }
             return View(lstUserVm);
         }
+
+        [Authorize(Roles = "Admin")]
         public ActionResult CreateRole()
         {
             return View();
         }
+
+        [Authorize(Roles = "Admin")]
         public ActionResult Roles(string id)
         {
             var userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(db));
@@ -61,6 +66,8 @@ namespace MediRed.Controllers
             };
             return View(userVm);
         }
+
+        [Authorize(Roles = "Admin")]
         public ActionResult AddRole(string id)
         {
             // Se invocan los manager y se crean las variables que se utilizaran
@@ -102,6 +109,7 @@ namespace MediRed.Controllers
 
         //Se le enviará por método post al formulario dos objetos: userId y un formcollection
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         public ActionResult AddRole(string userId, FormCollection frm)
         {
             var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(db));
@@ -141,6 +149,7 @@ namespace MediRed.Controllers
             return View("Roles", userVm);
         }
 
+        [Authorize(Roles = "Admin")]
         public ActionResult DeleteRole (string userId, string roleId)
         {
             var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(db));
@@ -179,6 +188,7 @@ namespace MediRed.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public ActionResult CreateRole(string RoleName, FormCollection frm)
         {
             //Instanciar un manager de roles
@@ -205,6 +215,27 @@ namespace MediRed.Controllers
                 lstUserVm.Add(userVm);
             }
             return View("Index", lstUserVm);
+        }
+
+        public ActionResult EliminateRole()
+        {
+            var roles = db.Roles.ToList();
+            return View(roles);
+        }
+
+        public ActionResult DeleteRolSystem(string RoleName)
+        {
+            try
+            {
+                var thisRole = db.Roles.Where(r => r.Name.Equals(RoleName, StringComparison.CurrentCultureIgnoreCase)).FirstOrDefault();
+                db.Roles.Remove(thisRole);
+                db.SaveChanges();
+            }
+            catch (Exception)
+            {
+                return RedirectToAction("EliminateRole");
+            }          
+            return RedirectToAction("Index");
         }
     }      
 }
