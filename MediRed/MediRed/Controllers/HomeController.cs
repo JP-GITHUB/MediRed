@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.Owin;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -10,6 +12,19 @@ namespace MediRed.Controllers
     {
         public ActionResult Index()
         {
+            var userManager = Request.GetOwinContext().GetUserManager<ApplicationUserManager>();
+            var roles = userManager.GetRoles(User.Identity.GetUserId());
+
+            if (roles.Contains("Medico"))
+            {
+                return RedirectToAction("Index", "Medics");
+            }
+
+            if (roles.Contains("Paciente"))
+            {
+                return RedirectToAction("Index", "Patients");
+            }               
+
             return View();
         }
 
