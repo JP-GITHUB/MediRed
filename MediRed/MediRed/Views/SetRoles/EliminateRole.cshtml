@@ -1,4 +1,5 @@
-﻿@model ICollection<MediRed.Models.RoleViewModel>
+﻿
+@model  MediRed.Models.RoleViewModel
 
 @{
     ViewBag.Title = "EliminateRole";
@@ -21,20 +22,19 @@
             <th></th>
         </tr>
 
-        @foreach (var item in Model)
+        @foreach (var role in Model)
         {
             <tr>
                 <td>
-                    @Html.DisplayFor(modelItem => item.RoleName)
+                    @Html.DisplayFor(modelItem => role.Name)
                 </td>
                 <td>
 
-                  @Html.ActionLink("Eliminar", "DeleteRole", new { roleId= item.RoleId })
+                    @Html.ActionLink("Eliminar", "EliminateRole", new { roleId = role.Id })
                 </td>
             </tr>
         }
     </table>
-}
 }
 
 <div>
