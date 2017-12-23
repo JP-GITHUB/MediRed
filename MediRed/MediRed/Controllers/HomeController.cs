@@ -16,17 +16,7 @@ namespace MediRed.Controllers
 
             if (User.Identity.IsAuthenticated)
             {
-                var roles = userManager.GetRoles(User.Identity.GetUserId());
-
-                if (roles.Contains("Medico"))
-                {
-                    return RedirectToAction("Index", "Medics");
-                }
-
-                if (roles.Contains("Paciente"))
-                {
-                    return RedirectToAction("Index", "Patients");
-                }
+                ViewBag.userRoles = userManager.GetRoles(User.Identity.GetUserId());
             }       
 
             return View();
