@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MediRed.Models
@@ -25,11 +26,15 @@ namespace MediRed.Models
 
         [Display(Name="Teléfono")]
         public int ContactNumber{ get; set; }
+
+        [StringLength(12, ErrorMessage = "Campo no puede superar los 12 caracteres.")]
+        [Display(Name ="Rut")]
+        public string Rut { get; set; }
         
         public int? CountryId { get; set; }
 
         [ForeignKey("CountryId")]
-        public virtual Country Country { get; set; }
+        public virtual Country Country { get; set; }        
 
     }
 }

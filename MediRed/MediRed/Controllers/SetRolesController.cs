@@ -91,7 +91,6 @@ namespace MediRed.Controllers
                 UserId = user.Id,
                 Email = user.Email,
                 UserName = user.UserName
-
             };
 
             //Para finalizar, la lista de roles conseguida se inserta en el dropdown creado en la vista

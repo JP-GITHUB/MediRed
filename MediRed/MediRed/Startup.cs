@@ -23,10 +23,10 @@ namespace MediRed
             var UserManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(context));
 
             // Se crea el Perfil de Médico
-            if (!roleManager.RoleExists("Médico"))
+            if (!roleManager.RoleExists("Medico"))
             {
                 var role = new IdentityRole();
-                role.Name = "Médico";
+                role.Name = "Medico";
                 roleManager.Create(role);
             }
             // Se crea el Rol de Paciente

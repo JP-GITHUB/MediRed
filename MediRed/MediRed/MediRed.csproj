@@ -179,9 +179,11 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Context\MediRedContext.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CountriesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\SetRolesController.cs" />
+    <Compile Include="Controllers\WellfaresController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -252,6 +254,7 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\ValidaRut.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="404.html" />
     <Content Include="Web.config">
@@ -298,6 +301,21 @@
     <Content Include="Views\SetRoles\Roles.cshtml" />
     <Content Include="Views\SetRoles\AddRole.cshtml" />
     <Content Include="Views\SetRoles\CreateRole.cshtml" />
+    <Content Include="Views\Countries\Create.cshtml" />
+    <Content Include="Views\Countries\Delete.cshtml" />
+    <Content Include="Views\Countries\Details.cshtml" />
+    <Content Include="Views\Countries\Edit.cshtml" />
+    <Content Include="Views\Countries\Index.cshtml" />
+    <Content Include="Views\Patients\Create.cshtml" />
+    <Content Include="Views\Patients\Delete.cshtml" />
+    <Content Include="Views\Patients\Details.cshtml" />
+    <Content Include="Views\Patients\Edit.cshtml" />
+    <Content Include="Views\Patients\Index.cshtml" />
+    <Content Include="Views\Wellfares\Create.cshtml" />
+    <Content Include="Views\Wellfares\Delete.cshtml" />
+    <Content Include="Views\Wellfares\Details.cshtml" />
+    <Content Include="Views\Wellfares\Edit.cshtml" />
+    <Content Include="Views\Wellfares\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -14,7 +14,7 @@ namespace MediRed.Models
         [Required]
         [Display(Name = "Previsíon")]
         [StringLength(50, ErrorMessage = "Campo no puede superar los 50 caracteres.")]
-        public string name { get; set; }
+        public string Name { get; set; }
 
         public string detail { get; set; }
 
