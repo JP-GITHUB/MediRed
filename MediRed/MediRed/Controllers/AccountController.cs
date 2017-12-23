@@ -145,8 +145,10 @@ namespace MediRed.Controllers
         public ActionResult Register()
         {
             var countryl = db.Countries.ToList();
+            countryl.Insert(0, new Country() { CountryId = -1, Name = "Debes seleccionar un País", Detail = "" });
             ViewBag.Country = countryl;
             var wellfarel = db.Wellfares.ToList();
+            wellfarel.Insert(0, new Wellfare() { WellfareId = -1, Name = "Debes seleccionar una Previsión" });
             ViewBag.Wellfare = wellfarel;
             return View();
         }
