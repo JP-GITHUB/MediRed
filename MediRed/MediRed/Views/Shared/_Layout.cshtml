@@ -22,24 +22,33 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <ul class="nav navbar-nav navbar-right">
-                        <li class="k-dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Centro Médico<span class="caret"></span></a>
-                            <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-                                <li class="">@Html.ActionLink("Centros de Atención", "Index", "AtentionCenters")</li>
-                                <li class="">@Html.ActionLink("Laboratorios", "Index", "Laboratories")</li>
-                                <li class="">@Html.ActionLink("Especialidades Médicas", "Index", "MedicalSpecialities")</li>
-                                <li class="">@Html.ActionLink("Medicamentos", "Index", "Medicines")</li>
-                                <li class="">@Html.ActionLink("Pacientes", "Index", "Patients")</li>
-                                <li class="">@Html.ActionLink("Asignar Roles", "Index", "SetRoles")</li>
-
-                            </ul>
-                        </li>
-                        <li class="k-dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Mantenedores<span class="caret"></span></a>
-                            <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-                                <li class="">@Html.ActionLink("Asignar Roles a Usuarios", "Index", "SetRoles")</li>
-                            </ul>
-                        </li>
+                        @if(ViewBag.userRoles != null) {
+                            if (ViewBag.userRoles.Count == 1 && ViewBag.userRoles.Contains("Paciente"))
+                            {
+                                <li class="k-dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Opciones<span class="caret"></span></a>
+                                    <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                                        <li class="">@Html.ActionLink("Historial del Paciente", "Index", "Histories")</li>
+                                    </ul>
+                                </li>
+                            }
+                            else
+                            {
+                                <li class="k-dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Mantenedores<span class="caret"></span></a>
+                                    <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                                        <li class="">@Html.ActionLink("Centros de Atención", "Index", "AtentionCenters")</li>
+                                        <li class="">@Html.ActionLink("Laboratorios", "Index", "Laboratories")</li>
+                                        <li class="">@Html.ActionLink("Especialidades Médicas", "Index", "MedicalSpecialities")</li>
+                                        <li class="">@Html.ActionLink("Medicamentos", "Index", "Medicines")</li>
+                                        <li class="">@Html.ActionLink("Pacientes", "Index", "Patients")</li>
+                                    </ul>
+                                </li>
+                                <li class="k-dropdown">
+                                    @Html.ActionLink("Asignar Roles a Usuarios", "Index", "SetRoles")
+                                </li>
+                            }
+                        }
                     </ul>
                 </ul>             
                 @Html.Partial("_LoginPartial")

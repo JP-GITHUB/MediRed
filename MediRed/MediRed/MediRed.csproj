@@ -179,8 +179,11 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Context\MediRedContext.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\HistoriesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\MedicsController.cs" />
+    <Compile Include="Controllers\PatientsController.cs" />
     <Compile Include="Controllers\SetRolesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -298,6 +301,17 @@
     <Content Include="Views\SetRoles\Roles.cshtml" />
     <Content Include="Views\SetRoles\AddRole.cshtml" />
     <Content Include="Views\SetRoles\CreateRole.cshtml" />
+    <Content Include="Views\Patients\Create.cshtml" />
+    <Content Include="Views\Patients\Delete.cshtml" />
+    <Content Include="Views\Patients\Details.cshtml" />
+    <Content Include="Views\Patients\Edit.cshtml" />
+    <Content Include="Views\Patients\Index.cshtml" />
+    <Content Include="Views\Medics\Create.cshtml" />
+    <Content Include="Views\Medics\Delete.cshtml" />
+    <Content Include="Views\Medics\Details.cshtml" />
+    <Content Include="Views\Medics\Edit.cshtml" />
+    <Content Include="Views\Medics\Index.cshtml" />
+    <Content Include="Views\Histories\Index.cshtml" />
     <Content Include="Views\SetRoles\EliminateRole.cshtml" />
   </ItemGroup>
   <ItemGroup>
