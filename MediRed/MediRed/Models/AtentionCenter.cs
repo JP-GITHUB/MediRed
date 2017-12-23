@@ -18,7 +18,6 @@ namespace MediRed.Models
 
         [Required]
         [Display(Name = " (*) Teléfono")]
-        [StringLength(19, ErrorMessage = "El teléfono ingresado no es válido", MinimumLength = 19)]
         public int PhoneCener { get; set; }
 
         public int ProviderId { get; set; }

@@ -179,12 +179,13 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Context\MediRedContext.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\HistoriesController.cs" />
+    <Compile Include="Controllers\AtentionCentersController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LaboratoriesController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="Controllers\MedicsController.cs" />
-    <Compile Include="Controllers\PatientsController.cs" />
+    <Compile Include="Controllers\PeopleController.cs" />
     <Compile Include="Controllers\SetRolesController.cs" />
+    <Compile Include="Controllers\WellfaresController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -301,18 +302,37 @@
     <Content Include="Views\SetRoles\Roles.cshtml" />
     <Content Include="Views\SetRoles\AddRole.cshtml" />
     <Content Include="Views\SetRoles\CreateRole.cshtml" />
+    <Content Include="Views\SetRoles\EliminateRole.cshtml" />
     <Content Include="Views\Patients\Create.cshtml" />
     <Content Include="Views\Patients\Delete.cshtml" />
     <Content Include="Views\Patients\Details.cshtml" />
     <Content Include="Views\Patients\Edit.cshtml" />
     <Content Include="Views\Patients\Index.cshtml" />
+    <Content Include="Views\Wellfares\Create.cshtml" />
+    <Content Include="Views\Wellfares\Delete.cshtml" />
+    <Content Include="Views\Wellfares\Details.cshtml" />
+    <Content Include="Views\Wellfares\Edit.cshtml" />
+    <Content Include="Views\Wellfares\Index.cshtml" />
+    <Content Include="Views\People\Create.cshtml" />
+    <Content Include="Views\People\Delete.cshtml" />
+    <Content Include="Views\People\Details.cshtml" />
+    <Content Include="Views\People\Edit.cshtml" />
+    <Content Include="Views\People\Index.cshtml" />
+    <Content Include="Views\AtentionCenters\Create.cshtml" />
+    <Content Include="Views\AtentionCenters\Delete.cshtml" />
+    <Content Include="Views\AtentionCenters\Details.cshtml" />
+    <Content Include="Views\AtentionCenters\Edit.cshtml" />
+    <Content Include="Views\AtentionCenters\Index.cshtml" />
+    <Content Include="Views\Laboratories\Create.cshtml" />
+    <Content Include="Views\Laboratories\Delete.cshtml" />
+    <Content Include="Views\Laboratories\Details.cshtml" />
+    <Content Include="Views\Laboratories\Edit.cshtml" />
+    <Content Include="Views\Laboratories\Index.cshtml" />
     <Content Include="Views\Medics\Create.cshtml" />
     <Content Include="Views\Medics\Delete.cshtml" />
     <Content Include="Views\Medics\Details.cshtml" />
     <Content Include="Views\Medics\Edit.cshtml" />
     <Content Include="Views\Medics\Index.cshtml" />
-    <Content Include="Views\Histories\Index.cshtml" />
-    <Content Include="Views\SetRoles\EliminateRole.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
