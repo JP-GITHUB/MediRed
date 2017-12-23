@@ -14,9 +14,6 @@ namespace MediRed.Migrations
             ContextKey = "MediRed.Context.MediRedContext";
             AutomaticMigrationDataLossAllowed = true;
 
-            AutomaticMigrationDataLossAllowed = true;
-            ContextKey = "MediRed.Context.MediRedContext";
-
         }
 
         protected override void Seed(MediRed.Context.MediRedContext context)

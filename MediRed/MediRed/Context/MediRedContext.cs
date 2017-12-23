@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MediRed.Models;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
@@ -25,9 +26,35 @@ namespace MediRed.Context
 
         public System.Data.Entity.DbSet<MediRed.Models.Laboratory> Laboratories { get; set; }
 
-        public System.Data.Entity.DbSet<MediRed.Models.MedicalSpeciality> MedicalSpecialities { get; set; }
+        public System.Data.Entity.DbSet<MediRed.Models.Country> Countries { get; set; }
 
         public System.Data.Entity.DbSet<MediRed.Models.Patient> Patients { get; set; }
 
+        public System.Data.Entity.DbSet<MediRed.Models.Medic> Medics { get; set; }
+
+        public System.Data.Entity.DbSet<MediRed.Models.Speciality> Specialities { get; set; }
+
+        public System.Data.Entity.DbSet<MediRed.Models.Wellfare> Wellfares { get; set; }
+
+        public System.Data.Entity.DbSet<MediRed.Models.Technologist> Technologist { get; set; }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Person>().ToTable("Person");
+            modelBuilder.Entity<Medic>().ToTable("Medic");
+            modelBuilder.Entity<Patient>().ToTable("Patient");
+            modelBuilder.Entity<Technologist>().ToTable("Technologist");
+            base.OnModelCreating(modelBuilder);
+        }
+
+        public System.Data.Entity.DbSet<MediRed.Models.Person> People { get; set; }
+
+        public System.Data.Entity.DbSet<MediRed.Models.Provider> Providers { get; set; }
+
+        public System.Data.Entity.DbSet<MediRed.Models.Attention> Attentions { get; set; }
+
+        public System.Data.Entity.DbSet<MediRed.Models.Diagnostic> Diagnostics { get; set; }
+
+        public System.Data.Entity.DbSet<MediRed.Models.History> Histories { get; set; }
     }
 }

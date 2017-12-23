@@ -1,0 +1,41 @@
+﻿@model MediRed.Models.UserViewModel
+@{
+    ViewBag.Title = "AddRole";
+}
+
+<h2>Asignar un nuevo rol al Usuario : @Model.UserName</h2>
+
+@*Se le indicará en la siguiete línea donde debe llegar el formulario, con método, controlador, objeto y post (ojo con el orden en el método)*@
+@using (Html.BeginForm("AddRole", "SetRoles", new { userId = Model.UserId }, FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        
+        <hr/> 
+        @Html.ValidationSummary(true, "", new { @class="text-danger"})
+        <div class="form-group">
+            @Html.LabelFor(model=>model.Roles.First().RoleName, "Roles", htmlAttributes: new {@class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("RolesId", null, htmlAttributes: new {@class="form-control" })
+                @Html.ValidationMessageFor(model=> model.Roles.First().RoleId, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Agregar" class="btn btn-default"/>
+        </div>
+
+    </div>
+</div>
+
+    <div>
+        @Html.ActionLink("Volver a la lista de Usuarios", "Index")
+    </div>
+
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+    }
+
+}

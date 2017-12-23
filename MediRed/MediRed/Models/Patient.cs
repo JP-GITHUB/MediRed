@@ -1,23 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
 namespace MediRed.Models
 {
+    [Table("Patient")]
     public class Patient: Person
     {
-        //public Diagnostic Diagnostic { get; set; }
-
         [Required]
-        [StringLength(100, ErrorMessage = "Campo no puede superar los 100 caracteres.")]
-        [Display(Name = "Diagnóstico")]
-        public string Diagnostic { get; set; }
+        [StringLength(10, ErrorMessage = "Campo no puede superar los 10 caracteres.")]
+        [Display(Name = "Tipo de Sangre")]
+        public string BloodType { get; set; }
+                
+        public int WellfareId { get; set; }
 
-        [Required]
-        [StringLength(50, ErrorMessage = "Campo no puede superar los 50 caracteres.")]
-        [Display(Name = "Tratamiento")]
-        public string Treatment { get; set; }
+        public virtual Wellfare Wellfare { get; set; }
     }
 }

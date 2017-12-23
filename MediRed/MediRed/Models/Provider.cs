@@ -6,14 +6,16 @@ using System.Web;
 
 namespace MediRed.Models
 {
-    public class MedicalSpeciality
+    public class Provider
     {
         [Key]
-        public int SpecialityId { get; set; }
+        public int ProviderId { get; set; }
 
         [Required]
-        [Display(Name = "Nombre Especialidad")]
+        [Display(Name = "Nombre")]
         [StringLength(100, ErrorMessage = "Campo no puede superar los 100 caracteres.")]
-        public string NameSpeciality { get; set; }
+        public string Name { get; set; }
+
+        public virtual ICollection<AtentionCenter> AtentionCenter { get; set; }
     }
 }

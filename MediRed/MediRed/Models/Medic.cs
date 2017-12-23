@@ -7,17 +7,16 @@ using System.Web;
 
 namespace MediRed.Models
 {
-    [Table("Technologist")]
-    public class Technologist: Person
+    [Table("Medic")]
+    public class Medic: Person
     {
-        [Required]
         public int SpecialityId { get; set; }
 
         public virtual Speciality Speciality { get; set; }
 
-        [Required]
-        public int LaboratoryId { get; set; }
+        public int AtentionCenterId { get; set; }
 
-        public virtual Laboratory Laboratory { get; set; }
-    }
-}       
+        public virtual AtentionCenter AtentionCenter { get; set; }
+    }   
+
+}

@@ -3,36 +3,33 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MediRed.Models
 {
+    [Table("Person")]
     public abstract class Person
     {
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int PersonId { get; set; }
+        public int Id { get; set; }
 
         [Required]
         [StringLength(50, ErrorMessage = "Campo no puede superar los 50 caracteres.")]
-        [Display(Name = "Nombre")]
-        public string Name { get; set; }
+        [Display(Name = "Nombres")]
+        public string FirstName { get; set; }
 
         [Required]
         [StringLength(50, ErrorMessage = "Campo no puede superar los 50 caracteres.")]
         [Display(Name="Apellidos")]
         public string LastName { get; set; }
 
-        [Required]
         [StringLength(50, ErrorMessage = "Campo no puede superar los 50 caracteres.")]
-        public string Email { get; set; }
+        [Display(Name = "Email")]
+        public string ContactEmail { get; set; }
 
         [Display(Name="Teléfono")]
-        public int Phone{ get; set; }
+        public int ContactNumber{ get; set; }
+        
+        public int? CountryId { get; set; }
 
-        [Display(Name = "Nombre Completo")]
-        public string FullName
-        {
-            get
-            {
-                return Name + " " + LastName;
-            }
-        }
+        [ForeignKey("CountryId")]
+        public virtual Country Country { get; set; }
+
     }
 }

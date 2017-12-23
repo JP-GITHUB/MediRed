@@ -1,0 +1,46 @@
+﻿@model ICollection<MediRed.Models.UserViewModel>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Asignar roles a usuarios</h2>
+<br />
+<p>
+    Encontrará a continuación los usuarios del sistema médico. <br/>
+    Aquí puede: <br />
+    <ul>
+        <li>Modificar los roles de los usuarios</li>
+        <li>Agregar un nuevo rol al sistema</li>
+    </ul>
+
+</p>
+<br />
+<p>
+    @Html.ActionLink("Agregar un nuevo rol al sistema", "CreateRole")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.First().UserName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().Email)
+        </th>
+        <th></th>
+    </tr>
+    @* Pendiente vaidación de modelo vacio o null *@
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.ActionLink("Roles de Usuario", "Roles", new { id = item.UserId })
+            </td>
+        </tr>
+    }
+</table>

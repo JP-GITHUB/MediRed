@@ -1,24 +1,26 @@
-﻿@model MediRed.Models.MedicalSpeciality
+﻿@model MediRed.Models.RoleViewModel
 
 @{
-    ViewBag.Title = "Crear Especialidad Médica";
+    ViewBag.Title = "CreateRole";
 }
 
-<h2>Crear Especialidad Médica</h2>
+<h2>Crear un nuevo Rol</h2>
+<p>
+    Ingrese el nombre del nuevo rol a continuación
+</p>
 
-
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
-            @Html.LabelFor(model => model.NameSpeciality, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.RoleName, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.NameSpeciality, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.NameSpeciality, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.RoleName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.RoleName, "", new { @class = "text-danger" })
             </div>
         </div>
 
