@@ -207,5 +207,19 @@ namespace MediRed.Controllers
             }
             return View("Index", lstUserVm);
         }
+
+        public ActionResult EliminateRole()
+        {
+            var roles = db.Roles.ToList();
+            return View(roles);
+        }
+
+        public ActionResult DeleteRolSystem(string RoleName)
+        {
+            var thisRole = db.Roles.Where(r => r.Name.Equals(RoleName, StringComparison.CurrentCultureIgnoreCase)).FirstOrDefault();
+            db.Roles.Remove(thisRole);
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
     }      
 }
