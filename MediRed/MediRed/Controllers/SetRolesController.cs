@@ -216,9 +216,16 @@ namespace MediRed.Controllers
 
         public ActionResult DeleteRolSystem(string RoleName)
         {
-            var thisRole = db.Roles.Where(r => r.Name.Equals(RoleName, StringComparison.CurrentCultureIgnoreCase)).FirstOrDefault();
-            db.Roles.Remove(thisRole);
-            db.SaveChanges();
+            try
+            {
+                var thisRole = db.Roles.Where(r => r.Name.Equals(RoleName, StringComparison.CurrentCultureIgnoreCase)).FirstOrDefault();
+                db.Roles.Remove(thisRole);
+                db.SaveChanges();
+            }
+            catch (Exception)
+            {
+                return RedirectToAction("EliminateRole");
+            }          
             return RedirectToAction("Index");
         }
     }      

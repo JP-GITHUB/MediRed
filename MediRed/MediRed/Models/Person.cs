@@ -11,19 +11,19 @@ namespace MediRed.Models
 
         [Required]
         [StringLength(50, ErrorMessage = "Campo no puede superar los 50 caracteres.")]
-        [Display(Name = "Nombres")]
+        [Display(Name = "(*) Nombres")]
         public string FirstName { get; set; }
 
         [Required]
         [StringLength(50, ErrorMessage = "Campo no puede superar los 50 caracteres.")]
-        [Display(Name="Apellidos")]
+        [Display(Name="(*) Apellidos")]
         public string LastName { get; set; }
 
         [StringLength(50, ErrorMessage = "Campo no puede superar los 50 caracteres.")]
-        [Display(Name = "Email")]
+        [Display(Name = "(*) Email")]
         public string ContactEmail { get; set; }
 
-        [Display(Name="Teléfono")]
+        [Display(Name="(*) Teléfono")]
         public int ContactNumber{ get; set; }
         
         public int? CountryId { get; set; }

@@ -12,11 +12,13 @@ namespace MediRed.Models
         public int AtentionCenterId { get; set; }
 
         [Required]
-        [Display(Name = "Dirección")]
+        [Display(Name = " (*) Dirección")]
+        [StringLength(100, ErrorMessage = "La dirección ingresada no es válida", MinimumLength = 6)]
         public string Address { get; set; }
 
         [Required]
-        [Display(Name = "Teléfono")]
+        [Display(Name = " (*) Teléfono")]
+        [StringLength(19, ErrorMessage = "El teléfono ingresado no es válido", MinimumLength = 19)]
         public int PhoneCener { get; set; }
 
         public int ProviderId { get; set; }

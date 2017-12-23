@@ -12,7 +12,7 @@ namespace MediRed.Models
         public int SpecialityId { get; set; }
 
         [Required]
-        [Display(Name = "Descripción Especialidad")]
+        [Display(Name = "(*) Descripción Especialidad")]
         [StringLength(100, ErrorMessage = "Campo no puede superar los 100 caracteres.")]
         public string Description { get; set; }
 
