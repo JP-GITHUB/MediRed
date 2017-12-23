@@ -207,5 +207,34 @@ namespace MediRed.Controllers
             }
             return View("Index", lstUserVm);
         }
+
+       
+        public ActionResult EliminateRole(string RoleName)
+        {
+            //Instanciar un manager de roles
+            var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(db));
+            var roleN = roleManager.FindByName(RoleName);
+
+            if (roleManager.RoleExists(RoleName))
+            {
+                var role = new IdentityRole();
+                role.Name = RoleName;              
+                roleManager.Delete(role);
+            }
+            var userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(db));
+            var lstUserVm = new List<UserViewModel>();
+
+            foreach (var user in userManager.Users)
+            {
+                var userVm = new UserViewModel()
+                {
+                    UserId = user.Id,
+                    UserName = user.UserName,
+                    Email = user.Email
+                };
+                lstUserVm.Add(userVm);
+            }
+            return View("Index", lstUserVm);
+        }
     }      
 }

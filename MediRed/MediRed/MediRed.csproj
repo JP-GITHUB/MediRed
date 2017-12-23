@@ -319,6 +319,7 @@
     <Content Include="Views\SetRoles\Roles.cshtml" />
     <Content Include="Views\SetRoles\AddRole.cshtml" />
     <Content Include="Views\SetRoles\CreateRole.cshtml" />
+    <Content Include="Views\SetRoles\EliminateRole.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

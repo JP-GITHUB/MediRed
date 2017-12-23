@@ -1,0 +1,46 @@
+﻿@model ICollection<MediRed.Models.RoleViewModel>
+
+@{
+    ViewBag.Title = "EliminateRole";
+}
+
+<h2>Eliminar un rol del sistema</h2>
+<p>
+    Escoja el rol a eliminar
+</p>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <table class="table">
+        <tr>
+            <th>
+                Roles del Sistema
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RoleName)
+                </td>
+                <td>
+
+                  @Html.ActionLink("Eliminar", "DeleteRole", new { roleId= item.RoleId })
+                </td>
+            </tr>
+        }
+    </table>
+}
+}
+
+<div>
+    @Html.ActionLink("Volver", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
