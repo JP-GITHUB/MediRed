@@ -13,10 +13,6 @@ using System.Web.Security;
 using System.Web.Routing;
 using MediRed.Models;
 using System;
-using MediRed.Models;
-using Microsoft.AspNet.Identity;
-using System.Configuration;
-using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace MediRed
 {
