@@ -67,17 +67,5 @@
 }
 
 @section Scripts {
-<script src="~/Scripts/ValidaRut.js"></script>
     @Scripts.Render("~/bundles/jqueryval")
-    <script>
-        $(function () {
-            $("#BTN_SEND").click(function (e) {
-                var rut = $("#Rut").val();
-                if (!Rut(rut)) {
-                    e.preventDefault();
-                    console.log("3");
-                }
-        })
-        });
-    </script>
 }

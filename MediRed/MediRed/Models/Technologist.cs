@@ -18,6 +18,9 @@ namespace MediRed.Models
         [Required]
         public int LaboratoryId { get; set; }
 
+        [Required]
+        public string Password { get; set; }
+
         public virtual Laboratory Laboratory { get; set; }
     }
 }       

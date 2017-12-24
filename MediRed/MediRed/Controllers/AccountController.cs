@@ -185,32 +185,17 @@ namespace MediRed.Controllers
                     var dbPatient = db.Patients;
                     dbPatient.Add(patient);
                     db.SaveChanges();
-
+                    //Asignacion de medicos
                     ApplicationDbContext ddb = new ApplicationDbContext();
                     var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(ddb));
                     var userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(ddb));
                     var userRol = userManager.FindByName(patient.ContactEmail);
                         userManager.AddToRole(userRol.Id, "Paciente");
-
-                    //le asigno el rol de paciente al usuario creado
-                    //var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(db));
-                    //var userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(db));
-                    //var userRol = userManager.FindByEmail(patient.ContactEmail);
-                    //var role = roleManager.FindByName("Paciente");
-                    ////Se verifica si el usuario tenia el rol, y si no lo tiene se le agrega
-
-                    //if (!userManager.IsInRole(userRol.Id, role.Name))
-                    //{
-                    //    userManager.AddToRole(userRol.Id, role.Name);
-                    //}
-
-
-
+                    //redireciono
                     return RedirectToAction("Index", "Home");
                 }
                 AddErrors(result);
             }
-
             // Si llegamos a este punto, es que se ha producido un error y volvemos a mostrar el formulario
             return View(model);
         }
