@@ -13,6 +13,7 @@ using Microsoft.AspNet.Identity;
 
 namespace MediRed.Controllers
 {
+    [Authorize]
     public class MedicsController : Controller
     {
         private MediRedContext db = new MediRedContext();

@@ -21,6 +21,7 @@ using System.Configuration;
 
 namespace MediRed.Controllers
 {
+    [Authorize]
     public class TechnologistsController : Controller
     {
         private MediRedContext db = new MediRedContext();

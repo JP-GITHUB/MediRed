@@ -13,6 +13,7 @@ using System.Net.Mail;
 
 namespace MediRed.Controllers
 {
+    [Authorize]
     public class AttentionsController : Controller
     {
         private MediRedContext db = new MediRedContext();

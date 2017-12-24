@@ -11,6 +11,7 @@ using MediRed.Models;
 
 namespace MediRed.Controllers
 {
+    [Authorize]
     public class HistoriesController : Controller
     {
         private MediRedContext db = new MediRedContext();
