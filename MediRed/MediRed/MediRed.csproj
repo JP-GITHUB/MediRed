@@ -186,8 +186,11 @@
     <Compile Include="Controllers\LaboratoriesController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MedicsController.cs" />
+    <Compile Include="Controllers\PatientsController.cs" />
     <Compile Include="Controllers\PeopleController.cs" />
     <Compile Include="Controllers\SetRolesController.cs" />
+    <Compile Include="Controllers\SpecialitiesController.cs" />
+    <Compile Include="Controllers\TechnologistsController.cs" />
     <Compile Include="Controllers\WellfaresController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -338,6 +341,28 @@
     <Content Include="Views\Medics\Details.cshtml" />
     <Content Include="Views\Medics\Edit.cshtml" />
     <Content Include="Views\Medics\Index.cshtml" />
+    <Content Include="Views\AtentionCenters\Create.cshtml" />
+    <Content Include="Views\AtentionCenters\Delete.cshtml" />
+    <Content Include="Views\AtentionCenters\Details.cshtml" />
+    <Content Include="Views\AtentionCenters\Edit.cshtml" />
+    <Content Include="Views\AtentionCenters\Index.cshtml" />
+    <Content Include="Views\Countries\Create.cshtml" />
+    <Content Include="Views\Countries\Delete.cshtml" />
+    <Content Include="Views\Countries\Details.cshtml" />
+    <Content Include="Views\Countries\Edit.cshtml" />
+    <Content Include="Views\Countries\Index.cshtml" />
+    <Content Include="Views\Medicines\SetRoles\Index.cshtml" />
+    <Content Include="Views\Medicines\SetRoles\Roles.cshtml" />
+    <Content Include="Views\Specialities\Create.cshtml" />
+    <Content Include="Views\Specialities\Delete.cshtml" />
+    <Content Include="Views\Specialities\Details.cshtml" />
+    <Content Include="Views\Specialities\Edit.cshtml" />
+    <Content Include="Views\Specialities\Index.cshtml" />
+    <Content Include="Views\Technologists\Create.cshtml" />
+    <Content Include="Views\Technologists\Delete.cshtml" />
+    <Content Include="Views\Technologists\Details.cshtml" />
+    <Content Include="Views\Technologists\Edit.cshtml" />
+    <Content Include="Views\Technologists\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
