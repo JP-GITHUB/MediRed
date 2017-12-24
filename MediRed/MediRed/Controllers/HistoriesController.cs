@@ -18,7 +18,9 @@ namespace MediRed.Controllers
         // GET: Histories
         public ActionResult Index()
         {
-            var histories = db.Histories.Include(h => h.Patient);
+            var User = this.User.Identity.Name;
+            var UserId = db.Patients.Where(x => x.ContactEmail == User).First().Id;
+            var histories = db.Histories.Where(x => x.HistoryId == UserId).ToList();
             return View(histories.ToList());
         }
 
