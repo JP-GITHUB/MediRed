@@ -63,37 +63,37 @@ namespace MediRed.Controllers
         }
 
         // GET: AtentionCenters/Edit/5
-        public ActionResult Edit(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            AtentionCenter atentionCenter = db.AtentionCenters.Find(id);
-            if (atentionCenter == null)
-            {
-                return HttpNotFound();
-            }
-            ViewBag.ProviderId = new SelectList(db.Providers, "ProviderId", "Name", atentionCenter.ProviderId);
-            return View(atentionCenter);
-        }
+        //public ActionResult Edit(int? id)
+        //{
+        //    if (id == null)
+        //    {
+        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+        //    }
+        //    AtentionCenter atentionCenter = db.AtentionCenters.Find(id);
+        //    if (atentionCenter == null)
+        //    {
+        //        return HttpNotFound();
+        //    }
+        //    ViewBag.ProviderId = new SelectList(db.Providers, "ProviderId", "Name", atentionCenter.ProviderId);
+        //    return View(atentionCenter);
+        //}
 
-        // POST: AtentionCenters/Edit/5
-        // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
-        // más información vea http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "AtentionCenterId,Address,PhoneCener,ProviderId")] AtentionCenter atentionCenter)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Entry(atentionCenter).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            ViewBag.ProviderId = new SelectList(db.Providers, "ProviderId", "Name", atentionCenter.ProviderId);
-            return View(atentionCenter);
-        }
+        //// POST: AtentionCenters/Edit/5
+        //// Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
+        //// más información vea http://go.microsoft.com/fwlink/?LinkId=317598.
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult Edit([Bind(Include = "AtentionCenterId,Address,PhoneCener,ProviderId")] AtentionCenter atentionCenter)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        db.Entry(atentionCenter).State = EntityState.Modified;
+        //        db.SaveChanges();
+        //        return RedirectToAction("Index");
+        //    }
+        //    ViewBag.ProviderId = new SelectList(db.Providers, "ProviderId", "Name", atentionCenter.ProviderId);
+        //    return View(atentionCenter);
+        //}
 
         // GET: AtentionCenters/Delete/5
         public ActionResult Delete(int? id)
