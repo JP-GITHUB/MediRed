@@ -181,6 +181,8 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CountriesController.cs" />
     <Compile Include="Controllers\AtentionCentersController.cs" />
+    <Compile Include="Controllers\AttentionsController.cs" />
+    <Compile Include="Controllers\HistoriesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LaboratoriesController.cs" />
     <Compile Include="Controllers\ManageController.cs" />

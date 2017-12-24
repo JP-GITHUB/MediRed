@@ -12,7 +12,7 @@ namespace MediRed.Models
         public int ProviderId { get; set; }
 
         [Required]
-        [Display(Name = " (*) Nombre")]
+        [Display(Name = "Nombre")]
         [StringLength(100, ErrorMessage = "Campo no puede superar los 100 caracteres.")]
         public string Name { get; set; }
 

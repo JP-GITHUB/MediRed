@@ -1,0 +1,56 @@
+﻿@model MediRed.Models.Attention
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Borrar</h2>
+
+<h3>¿Está seguro de borrar la atención médica?</h3>
+<div>
+    <h4>Atención Médica</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Diagnostic.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Diagnostic.Description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.History.PatientName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.History.PatientName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Medic.FirstName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Medic.FirstName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Detail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Detail)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Borrar" class="btn btn-default" /> |
+            @Html.ActionLink("Volver", "Index")
+        </div>
+    }
+</div>

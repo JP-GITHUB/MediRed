@@ -1,0 +1,50 @@
+﻿@model MediRed.Models.Attention
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Detalles</h2>
+
+<div>
+    <h4>Atención Médica</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Diagnostic.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Diagnostic.Description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.History.PatientName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.History.PatientName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Medic.FirstName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Medic.FirstName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Detail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Detail)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id = Model.AttentionId }) |
+    @Html.ActionLink("Volver", "Index")
+</p>

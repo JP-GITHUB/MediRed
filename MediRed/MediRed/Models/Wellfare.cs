@@ -12,7 +12,7 @@ namespace MediRed.Models
         public int WellfareId { get; set; }
 
         [Required]
-        [Display(Name = "(*) Previsión")]
+        [Display(Name = "Previsión")]
         [StringLength(50, ErrorMessage = "Campo no puede superar los 50 caracteres.")]
         public string Name { get; set; }
 

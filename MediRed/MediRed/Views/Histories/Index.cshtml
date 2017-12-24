@@ -1,14 +1,11 @@
 ﻿@model IEnumerable<MediRed.Models.History>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Historial";
 }
 
-<h2>Index</h2>
+<h2>Historial Médico</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
 <table class="table">
     <tr>
         <th>
@@ -53,9 +50,7 @@
             @Html.DisplayFor(modelItem => item.Diabetes)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.HistoryId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.HistoryId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.HistoryId })
+            @Html.ActionLink("Detalles", "Details", new { id=item.HistoryId }) 
         </td>
     </tr>
 }
