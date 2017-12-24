@@ -187,6 +187,7 @@ namespace MediRed.Controllers
                     db.SaveChanges();
                     History histo = new History();
                     var paciente = db.Patients.Where(x => x.ContactEmail == patient.ContactEmail).First();
+                    histo.HistoryId = paciente.Id;
                     histo.Id = paciente.Id;
                     db.Histories.Add(histo);
                     db.SaveChanges();
