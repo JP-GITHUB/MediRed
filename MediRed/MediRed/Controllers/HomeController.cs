@@ -16,7 +16,15 @@ namespace MediRed.Controllers
 
             if (User.Identity.IsAuthenticated)
             {
-                ViewBag.userRoles = userManager.GetRoles(User.Identity.GetUserId());
+                try
+                {
+                    ViewBag.userRoles = userManager.GetRoles(User.Identity.GetUserId());
+                }
+                catch (Exception)
+                {
+                    Session.Abandon();
+                    return RedirectToAction("index", "Home");
+                }
             }       
 
             return View();

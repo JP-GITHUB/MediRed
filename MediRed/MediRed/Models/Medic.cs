@@ -10,6 +10,8 @@ namespace MediRed.Models
     [Table("Medic")]
     public class Medic: Person
     {
+        public string Password { get; set; }
+
         public int SpecialityId { get; set; }
 
         public virtual Speciality Speciality { get; set; }

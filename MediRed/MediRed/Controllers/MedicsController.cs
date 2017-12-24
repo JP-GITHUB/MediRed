@@ -8,6 +8,8 @@ using System.Web;
 using System.Web.Mvc;
 using MediRed.Context;
 using MediRed.Models;
+using Microsoft.AspNet.Identity.EntityFramework;
+using Microsoft.AspNet.Identity;
 
 namespace MediRed.Controllers
 {
@@ -51,10 +53,30 @@ namespace MediRed.Controllers
         // más información vea http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,FirstName,LastName,ContactEmail,ContactNumber,CountryId,SpecialityId,AtentionCenterId")] Medic medic)
+        public ActionResult Create([Bind(Include = "Id,FirstName,LastName,ContactEmail,ContactNumber,Rut,CountryId,Password,SpecialityId,AtentionCenterId")] Medic medic)
         {
+            ApplicationDbContext context = new ApplicationDbContext();
             if (ModelState.IsValid)
             {
+                var UserManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(context));
+                var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(context));
+
+                var user = UserManager.FindByName(medic.ContactEmail);
+                if (user == null)
+                {
+                    user = new ApplicationUser()
+                    {
+                        Email = medic.ContactEmail,
+                        UserName = medic.ContactEmail
+                    };
+
+                    var statusCreate = UserManager.Create(user, medic.Password);
+
+                    user = UserManager.FindByName(medic.ContactEmail);
+                    var statusAddRole = UserManager.AddToRole(user.Id, "Medico");
+                }
+
+                medic.Password = user.PasswordHash;
                 db.Medics.Add(medic);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -89,7 +111,7 @@ namespace MediRed.Controllers
         // más información vea http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,FirstName,LastName,ContactEmail,ContactNumber,CountryId,SpecialityId,AtentionCenterId")] Medic medic)
+        public ActionResult Edit([Bind(Include = "Id,FirstName,LastName,ContactEmail,ContactNumber,Rut,CountryId,Password,SpecialityId,AtentionCenterId")] Medic medic)
         {
             if (ModelState.IsValid)
             {
@@ -124,7 +146,7 @@ namespace MediRed.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             Medic medic = db.Medics.Find(id);
-            db.Medics.Remove(medic);
+            db.People.Remove(medic);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
