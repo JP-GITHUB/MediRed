@@ -1,0 +1,45 @@
+﻿@model IEnumerable<MediRed.Models.AtentionCenter>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Centros de Atención Médica</h2>
+
+<p>
+    @Html.ActionLink("Crear un nuevo centro", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Provider.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Address)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PhoneCener)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Provider.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Address)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PhoneCener)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id=item.AtentionCenterId }) |
+            @Html.ActionLink("Detalles", "Details", new { id=item.AtentionCenterId }) |
+            @Html.ActionLink("Borrar", "Delete", new { id=item.AtentionCenterId })
+        </td>
+    </tr>
+}
+
+</table>
