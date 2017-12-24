@@ -56,5 +56,7 @@ namespace MediRed.Context
         public System.Data.Entity.DbSet<MediRed.Models.Diagnostic> Diagnostics { get; set; }
 
         public System.Data.Entity.DbSet<MediRed.Models.History> Histories { get; set; }
+
+        public System.Data.Entity.DbSet<MediRed.Models.Treatment> Treatments { get; set; }
     }
 }

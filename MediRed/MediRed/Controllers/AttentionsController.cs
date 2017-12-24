@@ -8,6 +8,8 @@ using System.Web;
 using System.Web.Mvc;
 using MediRed.Context;
 using MediRed.Models;
+using MediRed.Utilities;
+using System.Net.Mail;
 
 namespace MediRed.Controllers
 {
@@ -42,7 +44,7 @@ namespace MediRed.Controllers
         {
             ViewBag.DiagnosticId = new SelectList(db.Diagnostics, "DiagnosticId", "Description");
             ViewBag.HistoryId = new SelectList(db.Histories, "HistoryId", "PatientName");
-            ViewBag.Id = new SelectList(db.People, "Id", "FirstName");
+            ViewBag.Id = new SelectList(db.Patients, "Id", "FirstName");
             return View();
         }
 
@@ -55,8 +57,30 @@ namespace MediRed.Controllers
         {
             if (ModelState.IsValid)
             {
+                var histo = db.Histories.Where(x => x.Id == attention.Id).First();
+                attention.HistoryId = histo.HistoryId;
+                var medic = db.Medics.Where(x => x.ContactEmail == this.User.Identity.Name).First();
+                attention.Id = medic.Id;
                 db.Attentions.Add(attention);
                 db.SaveChanges();
+                var Di = db.Diagnostics.Where(x => x.DiagnosticId == attention.DiagnosticId).First();
+                //mensajeria
+                if (Di.RedDiagnostic)
+                {
+                    var patient = db.Patients.Where(x => x.Id == histo.Id).First();
+                    var mail = patient.ContactEmail;
+                    Notification msg = new Notification();
+                    MailMessage mnsj = new MailMessage();
+                    mnsj.Subject = "Mensaje Urgente [Medired]";
+                    mnsj.To.Add(new MailAddress(mail));
+                    mnsj.From = new MailAddress("MediredMsg@gmail.com", "Equipo Medired");
+                    mnsj.Body = "Estimado Paciente \n\n Necesitamos que se comunique con su medico \n a la brevedad\n\n " +
+                                            "Su diagnostico requiere de atencion especial. \n\n\n\n Medired - Nos preocupamos por ti";
+                    /* Enviar */
+                    msg.MandarCorreo(mnsj);
+
+                }
+
                 return RedirectToAction("Index");
             }
 

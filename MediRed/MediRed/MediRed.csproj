@@ -179,8 +179,10 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Context\MediRedContext.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AtentionCentersController.cs" />
     <Compile Include="Controllers\CountriesController.cs" />
     <Compile Include="Controllers\AttentionsController.cs" />
+    <Compile Include="Controllers\DiagnosticsController.cs" />
     <Compile Include="Controllers\HistoriesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LaboratoriesController.cs" />
@@ -188,9 +190,11 @@
     <Compile Include="Controllers\MedicsController.cs" />
     <Compile Include="Controllers\PatientsController.cs" />
     <Compile Include="Controllers\PeopleController.cs" />
+    <Compile Include="Controllers\ProvidersController.cs" />
     <Compile Include="Controllers\SetRolesController.cs" />
     <Compile Include="Controllers\SpecialitiesController.cs" />
     <Compile Include="Controllers\TechnologistsController.cs" />
+    <Compile Include="Controllers\TreatmentsController.cs" />
     <Compile Include="Controllers\WellfaresController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -363,6 +367,21 @@
     <Content Include="Views\Technologists\Details.cshtml" />
     <Content Include="Views\Technologists\Edit.cshtml" />
     <Content Include="Views\Technologists\Index.cshtml" />
+    <Content Include="Views\Providers\Create.cshtml" />
+    <Content Include="Views\Providers\Delete.cshtml" />
+    <Content Include="Views\Providers\Details.cshtml" />
+    <Content Include="Views\Providers\Edit.cshtml" />
+    <Content Include="Views\Providers\Index.cshtml" />
+    <Content Include="Views\Diagnostics\Create.cshtml" />
+    <Content Include="Views\Diagnostics\Delete.cshtml" />
+    <Content Include="Views\Diagnostics\Details.cshtml" />
+    <Content Include="Views\Diagnostics\Edit.cshtml" />
+    <Content Include="Views\Diagnostics\Index.cshtml" />
+    <Content Include="Views\Treatments\Create.cshtml" />
+    <Content Include="Views\Treatments\Delete.cshtml" />
+    <Content Include="Views\Treatments\Details.cshtml" />
+    <Content Include="Views\Treatments\Edit.cshtml" />
+    <Content Include="Views\Treatments\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

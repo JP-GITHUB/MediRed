@@ -185,6 +185,11 @@ namespace MediRed.Controllers
                     var dbPatient = db.Patients;
                     dbPatient.Add(patient);
                     db.SaveChanges();
+                    History histo = new History();
+                    var paciente = db.Patients.Where(x => x.ContactEmail == patient.ContactEmail).First();
+                    histo.Id = paciente.Id;
+                    db.Histories.Add(histo);
+                    db.SaveChanges();
                     //Asignacion de medicos
                     ApplicationDbContext ddb = new ApplicationDbContext();
                     var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(ddb));
