@@ -308,8 +308,6 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\CustomViews\400.cshtml" />
     <Content Include="Views\CustomViews\404.cshtml" />
-    <Content Include="Views\CustomViews\400.cshtml" />
-    <Content Include="Views\CustomViews\404.cshtml" />
     <Content Include="Views\SetRoles\Index.cshtml" />
     <Content Include="Views\SetRoles\Roles.cshtml" />
     <Content Include="Views\SetRoles\AddRole.cshtml" />
