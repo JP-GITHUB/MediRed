@@ -306,8 +306,6 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\CustomViews\400.cshtml" />
-    <Content Include="Views\CustomViews\404.cshtml" />
     <Content Include="Views\SetRoles\Index.cshtml" />
     <Content Include="Views\SetRoles\Roles.cshtml" />
     <Content Include="Views\SetRoles\AddRole.cshtml" />
@@ -384,6 +382,8 @@
     <Content Include="Views\Medicines\Details.cshtml" />
     <Content Include="Views\Medicines\Edit.cshtml" />
     <Content Include="Views\Medicines\Index.cshtml" />
+    <Content Include="Views\CustomViews\400.cshtml" />
+    <Content Include="Views\CustomViews\404.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
