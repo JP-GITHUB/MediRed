@@ -90,42 +90,42 @@ namespace MediRed.Controllers
             return View(attention);
         }
 
-        // GET: Attentions/Edit/5
-        public ActionResult Edit(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Attention attention = db.Attentions.Find(id);
-            if (attention == null)
-            {
-                return HttpNotFound();
-            }
-            ViewBag.DiagnosticId = new SelectList(db.Diagnostics, "DiagnosticId", "Description", attention.DiagnosticId);
-            ViewBag.HistoryId = new SelectList(db.Histories, "HistoryId", "PatientName", attention.HistoryId);
-            ViewBag.Id = new SelectList(db.People, "Id", "FirstName", attention.Id);
-            return View(attention);
-        }
+        //// GET: Attentions/Edit/5
+        //public ActionResult Edit(int? id)
+        //{
+        //    if (id == null)
+        //    {
+        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+        //    }
+        //    Attention attention = db.Attentions.Find(id);
+        //    if (attention == null)
+        //    {
+        //        return HttpNotFound();
+        //    }
+        //    ViewBag.DiagnosticId = new SelectList(db.Diagnostics, "DiagnosticId", "Description", attention.DiagnosticId);
+        //    ViewBag.HistoryId = new SelectList(db.Histories, "HistoryId", "PatientName", attention.HistoryId);
+        //    ViewBag.Id = new SelectList(db.People, "Id", "FirstName", attention.Id);
+        //    return View(attention);
+        //}
 
-        // POST: Attentions/Edit/5
-        // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
-        // más información vea http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "AttentionId,Detail,Id,DiagnosticId,HistoryId")] Attention attention)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Entry(attention).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            ViewBag.DiagnosticId = new SelectList(db.Diagnostics, "DiagnosticId", "Description", attention.DiagnosticId);
-            ViewBag.HistoryId = new SelectList(db.Histories, "HistoryId", "PatientName", attention.HistoryId);
-            ViewBag.Id = new SelectList(db.People, "Id", "FirstName", attention.Id);
-            return View(attention);
-        }
+        //// POST: Attentions/Edit/5
+        //// Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
+        //// más información vea http://go.microsoft.com/fwlink/?LinkId=317598.
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult Edit([Bind(Include = "AttentionId,Detail,Id,DiagnosticId,HistoryId")] Attention attention)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        db.Entry(attention).State = EntityState.Modified;
+        //        db.SaveChanges();
+        //        return RedirectToAction("Index");
+        //    }
+        //    ViewBag.DiagnosticId = new SelectList(db.Diagnostics, "DiagnosticId", "Description", attention.DiagnosticId);
+        //    ViewBag.HistoryId = new SelectList(db.Histories, "HistoryId", "PatientName", attention.HistoryId);
+        //    ViewBag.Id = new SelectList(db.People, "Id", "FirstName", attention.Id);
+        //    return View(attention);
+        //}
 
         // GET: Attentions/Delete/5
         public ActionResult Delete(int? id)
