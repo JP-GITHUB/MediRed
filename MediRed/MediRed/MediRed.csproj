@@ -186,6 +186,8 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\PeopleController.cs" />
     <Compile Include="Controllers\SetRolesController.cs" />
+    <Compile Include="Controllers\SpecialitiesController.cs" />
+    <Compile Include="Controllers\TechnologistsController.cs" />
     <Compile Include="Controllers\WellfaresController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -335,6 +337,16 @@
     <Content Include="Views\Medics\Details.cshtml" />
     <Content Include="Views\Medics\Edit.cshtml" />
     <Content Include="Views\Medics\Index.cshtml" />
+    <Content Include="Views\Technologists\Create.cshtml" />
+    <Content Include="Views\Technologists\Delete.cshtml" />
+    <Content Include="Views\Technologists\Details.cshtml" />
+    <Content Include="Views\Technologists\Edit.cshtml" />
+    <Content Include="Views\Technologists\Index.cshtml" />
+    <Content Include="Views\Specialities\Create.cshtml" />
+    <Content Include="Views\Specialities\Delete.cshtml" />
+    <Content Include="Views\Specialities\Details.cshtml" />
+    <Content Include="Views\Specialities\Edit.cshtml" />
+    <Content Include="Views\Specialities\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

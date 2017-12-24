@@ -36,6 +36,13 @@ namespace MediRed
                 role.Name = "Paciente";
                 roleManager.Create(role);
             }
+            //Se crea el Rol de Tenologo
+            if (!roleManager.RoleExists("Tecnologo"))
+            {
+                var role = new IdentityRole();
+                role.Name = "Tecnologo";
+                roleManager.Create(role);
+            }
         }
     }
 }
