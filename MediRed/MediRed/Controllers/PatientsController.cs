@@ -39,31 +39,31 @@ namespace MediRed.Controllers
         }
 
         // GET: Patients/Create
-        public ActionResult Create()
-        {
-            ViewBag.CountryId = new SelectList(db.Countries, "CountryId", "Name");
-            ViewBag.WellfareId = new SelectList(db.Wellfares, "WellfareId", "name");
-            return View();
-        }
+        //public ActionResult Create()
+        //{
+        //    ViewBag.CountryId = new SelectList(db.Countries, "CountryId", "Name");
+        //    ViewBag.WellfareId = new SelectList(db.Wellfares, "WellfareId", "name");
+        //    return View();
+        //}
 
-        // POST: Patients/Create
-        // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
-        // más información vea http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,FirstName,LastName,ContactEmail,ContactNumber,CountryId,BloodType,WellfareId")] Patient patient)
-        {
-            if (ModelState.IsValid)
-            {
-                db.People.Add(patient);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
+        //// POST: Patients/Create
+        //// Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
+        //// más información vea http://go.microsoft.com/fwlink/?LinkId=317598.
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult Create([Bind(Include = "Id,FirstName,LastName,ContactEmail,ContactNumber,CountryId,BloodType,WellfareId")] Patient patient)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        db.People.Add(patient);
+        //        db.SaveChanges();
+        //        return RedirectToAction("Index");
+        //    }
 
-            ViewBag.CountryId = new SelectList(db.Countries, "CountryId", "Name", patient.CountryId);
-            ViewBag.WellfareId = new SelectList(db.Wellfares, "WellfareId", "name", patient.WellfareId);
-            return View(patient);
-        }
+        //    ViewBag.CountryId = new SelectList(db.Countries, "CountryId", "Name", patient.CountryId);
+        //    ViewBag.WellfareId = new SelectList(db.Wellfares, "WellfareId", "name", patient.WellfareId);
+        //    return View(patient);
+        //}
 
         // GET: Patients/Edit/5
         public ActionResult Edit(int? id)
