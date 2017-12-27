@@ -11,6 +11,7 @@ namespace MediRed.Models
         [Key]
         public int TreatmentId { get; set; }
 
+        [Required]
         public string Detail { get; set; }
 
         public virtual ICollection<Medicine> Medicines { get; set; }

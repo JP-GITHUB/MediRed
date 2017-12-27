@@ -10,6 +10,7 @@ namespace MediRed.Models
     [Table("Medic")]
     public class Medic: Person
     {
+        [Required]
         public string Password { get; set; }
 
         public int SpecialityId { get; set; }
