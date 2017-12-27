@@ -86,6 +86,8 @@ namespace MediRed.Controllers
             ViewBag.CountryId = new SelectList(db.Countries, "CountryId", "Name", medic.CountryId);
             ViewBag.AtentionCenterId = new SelectList(db.AtentionCenters, "AtentionCenterId", "Address", medic.AtentionCenterId);
             ViewBag.SpecialityId = new SelectList(db.Specialities, "SpecialityId", "Description", medic.SpecialityId);
+
+            ModelState.AddModelError("Rut", "Already outbid");
             return View(medic);
         }
 

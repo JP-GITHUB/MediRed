@@ -21,8 +21,10 @@ namespace MediRed.Controllers
         {
             var User = this.User.Identity.Name;
             var UserId = db.Patients.Where(x => x.ContactEmail == User).First().Id;
-            var histories = db.Histories.Where(x => x.HistoryId == UserId).ToList();
-            return View(histories.ToList());
+            var HistoryId = db.Histories.Where(x => x.HistoryId == UserId).First().HistoryId;
+
+            var attentions = db.Attentions.Where(x => x.HistoryId == HistoryId).ToList();
+            return View(attentions);
         }
 
         // GET: Histories/Details/5

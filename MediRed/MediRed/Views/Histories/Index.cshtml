@@ -1,4 +1,4 @@
-﻿@model IEnumerable<MediRed.Models.History>
+﻿@model IEnumerable<MediRed.Models.Attention>
 
 @{
     ViewBag.Title = "Historial";
@@ -9,50 +9,51 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Patient.FirstName)
+            @Html.DisplayNameFor(model => model.Detail)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.PatientName)
+            @Html.DisplayNameFor(model => model.Diagnostic.Description)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ClientIdentification)
+            @Html.DisplayNameFor(model => model.Diagnostic.Treatment.Detail)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ClientBloodType)
+            @Html.DisplayNameFor(model => model.Diagnostic.RedDiagnostic)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Hypertension)
+            @Html.DisplayNameFor(model => model.Medic.FirstName) Médico
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Diabetes)
+            @Html.DisplayNameFor(model => model.Medic.Rut) Médico
         </th>
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Patient.FirstName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PatientName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ClientIdentification)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ClientBloodType)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Hypertension)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Diabetes)
-        </td>
-        <td>
-            @*@Html.ActionLink("Detalles", "Details", new { id=item.HistoryId })*@ 
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Detail)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Diagnostic.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Diagnostic.Treatment.Detail)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Diagnostic.RedDiagnostic)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Medic.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Medic.Rut)
+            </td>
+            <td>
+                @*@Html.ActionLink("Detalles", "Details", new { id=item.HistoryId })*@
+            </td>
+        </tr>
+    }
 
 </table>
