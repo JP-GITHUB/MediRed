@@ -59,28 +59,52 @@ namespace MediRed.Controllers
             if (ModelState.IsValid)
             {
                 var histo = db.Histories.Where(x => x.Id == attention.Id).FirstOrDefault();
-                attention.HistoryId = histo.HistoryId;
-                var medic = db.Medics.Where(x => x.ContactEmail == this.User.Identity.Name).FirstOrDefault();
-                attention.Id = medic.Id;
-                db.Attentions.Add(attention);
-                db.SaveChanges();
-                var Di = db.Diagnostics.Where(x => x.DiagnosticId == attention.DiagnosticId).FirstOrDefault();
-                //mensajeria
-                if (Di.RedDiagnostic)
+                if (histo != null)
                 {
-                    var patient = db.Patients.Where(x => x.Id == histo.Id).FirstOrDefault();
-                    var mail = patient.ContactEmail;
-                    Notification msg = new Notification();
-                    MailMessage mnsj = new MailMessage();
-                    mnsj.Subject = "Mensaje Urgente [Medired]";
-                    mnsj.To.Add(new MailAddress(mail));
-                    mnsj.From = new MailAddress("MediredMsg@gmail.com", "Equipo Medired");
-                    mnsj.Body = "Estimado Paciente \n\n Necesitamos que se comunique con su medico \n a la brevedad\n\n " +
-                                            "Su diagnostico requiere de atencion especial. \n\n\n\n Medired - Nos preocupamos por ti";
-                    /* Enviar */
-                    msg.MandarCorreo(mnsj);
+                    attention.HistoryId = histo.HistoryId;
 
+                    var medic = db.Medics.Where(x => x.ContactEmail == this.User.Identity.Name).FirstOrDefault();
+                    if (medic != null)
+                    {                        
+                        attention.Id = medic.Id;
+                        db.Attentions.Add(attention);
+                        db.SaveChanges();
+                        var Di = db.Diagnostics.Where(x => x.DiagnosticId == attention.DiagnosticId).FirstOrDefault();
+                        //mensajeria
+                        if (Di.RedDiagnostic)
+                        {
+                            var patient = db.Patients.Where(x => x.Id == histo.Id).FirstOrDefault();
+                            if(patient != null)
+                            {
+                                var mail = patient.ContactEmail;
+                                Notification msg = new Notification();
+                                MailMessage mnsj = new MailMessage();
+                                mnsj.Subject = "Mensaje Urgente [Medired]";
+                                mnsj.To.Add(new MailAddress(mail));
+                                mnsj.From = new MailAddress("MediredMsg@gmail.com", "Equipo Medired");
+                                mnsj.Body = "Estimado Paciente \n\n Necesitamos que se comunique con su medico \n a la brevedad\n\n " +
+                                                        "Su diagnostico requiere de atencion especial. \n\n\n\n Medired - Nos preocupamos por ti";
+                                /* Enviar */
+                                msg.MandarCorreo(mnsj);
+                            }else
+                            {
+                                // Sin Paciente encontrado
+                                ViewBag["MsgError"] = "Error al generar la creación de la atención";
+                            }
+                        }
+                    }else
+                    {
+                        // Sin Médico encontrado
+                        ViewBag["MsgError"] = "Error al generar la creación de la atención";
+                    }
+
+                }else
+                {
+                    // Sin historial encontrado
+                    ViewBag["MsgError"] = "Error al generar la creación de la atención";
                 }
+
+
 
                 return RedirectToAction("Index");
             }
