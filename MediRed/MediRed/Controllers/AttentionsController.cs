@@ -58,17 +58,17 @@ namespace MediRed.Controllers
         {
             if (ModelState.IsValid)
             {
-                var histo = db.Histories.Where(x => x.Id == attention.Id).First();
+                var histo = db.Histories.Where(x => x.Id == attention.Id).FirstOrDefault();
                 attention.HistoryId = histo.HistoryId;
-                var medic = db.Medics.Where(x => x.ContactEmail == this.User.Identity.Name).First();
+                var medic = db.Medics.Where(x => x.ContactEmail == this.User.Identity.Name).FirstOrDefault();
                 attention.Id = medic.Id;
                 db.Attentions.Add(attention);
                 db.SaveChanges();
-                var Di = db.Diagnostics.Where(x => x.DiagnosticId == attention.DiagnosticId).First();
+                var Di = db.Diagnostics.Where(x => x.DiagnosticId == attention.DiagnosticId).FirstOrDefault();
                 //mensajeria
                 if (Di.RedDiagnostic)
                 {
-                    var patient = db.Patients.Where(x => x.Id == histo.Id).First();
+                    var patient = db.Patients.Where(x => x.Id == histo.Id).FirstOrDefault();
                     var mail = patient.ContactEmail;
                     Notification msg = new Notification();
                     MailMessage mnsj = new MailMessage();
