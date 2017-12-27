@@ -1,4 +1,7 @@
 ﻿function checkRut(rut) {
+    // Minimo permitido
+    var minimo = 1
+
     // Despejar Puntos
     var valor = rut.replace('.', '');
     // Despejar Guión
@@ -12,7 +15,7 @@
     rut.value = cuerpo + '-' + dv
 
     // Si no cumple con el mínimo ej. (n.nnn.nnn)
-    if (cuerpo.length < 7) {
+    if (cuerpo.length < minimo) {
         //("RUT Incompleto")
         return false;
     }
