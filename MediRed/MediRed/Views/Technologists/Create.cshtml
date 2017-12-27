@@ -17,8 +17,11 @@
 
         <span class="msg-validate-rut text-danger"></span>
         <br /><br />
-
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @if (ViewBag.message != null)
+        {
+            <label class="control-label text-danger">El correo @Model.ContactEmail ya se encuentra registrado</label>
+        }
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })        
         <div class="form-group">
             @Html.LabelFor(model => model.FirstName, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
