@@ -146,9 +146,16 @@ namespace MediRed.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
+            ApplicationDbContext context = new ApplicationDbContext();
+
             Medic medic = db.Medics.Find(id);
             db.People.Remove(medic);
             db.SaveChanges();
+
+            var UserManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(context));
+            var user = UserManager.FindByEmail(medic.ContactEmail);
+            UserManager.Delete(user);
+
             return RedirectToAction("Index");
         }
 
