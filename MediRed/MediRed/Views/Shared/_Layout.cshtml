@@ -22,24 +22,24 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <ul class="nav navbar-nav navbar-right">
+
                         @if(ViewBag.userRoles != null) {
+
                             if (ViewBag.userRoles.Count == 1 && ViewBag.userRoles.Contains("Paciente"))
                             {
                                 <li class="k-dropdown">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">¿Qué desea hacer?<span class="caret"></span></a>
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> Opciones del Paciente <span class="caret"></span></a>
                                     <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
                                         <li class="">@Html.ActionLink("Historial del Paciente", "Index", "Histories")</li>
                                     </ul>
                                 </li>
-                                 <li class="k-dropdown">
-                                    @Html.ActionLink("Crear Atención", "Index", "Attentions")
-                                </li>
-                            }
-                            else
-                             if (ViewBag.userRoles.Count == 1 && ViewBag.userRoles.Contains("Medico"))
-                            {
+                                 
+                             }
+                          
+                             else if (ViewBag.userRoles.Count == 1 && ViewBag.userRoles.Contains("Medico"))
+                             {
                                 <li class="k-dropdown">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Opciones<span class="caret"></span></a>
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> Doctor, seleccione : <span class="caret"></span></a>
                                     <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
                                         <li class="">@Html.ActionLink("Pacientes", "Index", "Patients")</li>
                                         <li class="">@Html.ActionLink("Medicamentos", "Index", "Medicines")</li>
@@ -50,7 +50,10 @@
                                 <li class="k-dropdown">
                                     @Html.ActionLink("Crear Atención", "Index", "Attentions")
                                 </li>
-                            }else
+
+                             }
+
+                            else
                             {
                                 <li class="k-dropdown">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Mantenedores<span class="caret"></span></a>
