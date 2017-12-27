@@ -67,9 +67,6 @@ namespace MediRed.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.People.Add(technologist);
-                db.SaveChanges();
-
                 var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(ddb));
                 var UserManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(ddb));
 
@@ -98,12 +95,17 @@ namespace MediRed.Controllers
                     //redireciono
                     return RedirectToAction("Index");
                 }
+                ViewBag.message = result.Errors;
+                ViewBag.CountryId = new SelectList(db.Countries, "CountryId", "Name", technologist.CountryId);
+                ViewBag.LaboratoryId = new SelectList(db.Laboratories, "LaboratoryId", "Name", technologist.LaboratoryId);
+                ViewBag.SpecialityId = new SelectList(db.Specialities, "SpecialityId", "Description", technologist.SpecialityId);
+                return View(technologist);
             }
-
             ViewBag.CountryId = new SelectList(db.Countries, "CountryId", "Name", technologist.CountryId);
             ViewBag.LaboratoryId = new SelectList(db.Laboratories, "LaboratoryId", "Name", technologist.LaboratoryId);
             ViewBag.SpecialityId = new SelectList(db.Specialities, "SpecialityId", "Description", technologist.SpecialityId);
             return View(technologist);
+
         }
 
         // GET: Technologists/Edit/5

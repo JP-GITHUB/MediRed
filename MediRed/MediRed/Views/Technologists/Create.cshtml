@@ -14,7 +14,14 @@
     <div class="form-horizontal">
         <h4>Tecnólogo</h4>
         <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <span class="msg-validate-rut text-danger"></span>
+        <br /><br />
+        @if (ViewBag.message != null)
+        {
+            <label class="control-label text-danger">El correo @Model.ContactEmail ya se encuentra registrado</label>
+        }
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })        
         <div class="form-group">
             @Html.LabelFor(model => model.FirstName,"Nombre (*)", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -50,7 +57,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Rut, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Rut, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.Rut, new { htmlAttributes = new { @class = "form-control validate-rut" } })
                 @Html.ValidationMessageFor(model => model.Rut, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -102,4 +109,6 @@
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+    <script type="text/javascript" src="~/Scripts/ValidaRut.js"></script>
+    <script type="text/javascript" src="~/Scripts/main.js"></script>
 }
