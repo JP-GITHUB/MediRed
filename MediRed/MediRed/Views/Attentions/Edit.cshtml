@@ -18,7 +18,7 @@
         @Html.HiddenFor(model => model.AttentionId)
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Detail, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Detail,"Detalle", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Detail, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Detail, "", new { @class = "text-danger" })
@@ -26,7 +26,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Id, "Id", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Id, "Médico (*)", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownList("Id", null, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.Id, "", new { @class = "text-danger" })
@@ -34,7 +34,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.DiagnosticId, "DiagnosticId", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.DiagnosticId, "Dignóstico (*)", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownList("DiagnosticId", null, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.DiagnosticId, "", new { @class = "text-danger" })
@@ -43,6 +43,7 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
+                @Html.Label("(*) Campos requeridos")
                 <input type="submit" value="Guardar" class="btn btn-default" />
             </div>
         </div>
